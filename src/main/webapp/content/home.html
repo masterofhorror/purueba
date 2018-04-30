@@ -1,0 +1,33 @@
+<div class="contenido col-md-12 panelServicio">
+    <div
+        class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+        <h3 class="titulo-linea">BIENVENIDO</h3>
+
+        <div class="panel-body">
+
+            <div ng-repeat="menu in opcionesMenu" class="content">
+                <div ng-show="menu.id !== 1" class="contenido col-md-12 default-fila">
+                    <div class="region region-content">
+                        <h2>{{menu.nombre}}</h2>
+                        <div id="block-system-main" class="block block-system">
+                            <div class="content">
+                                <div class="view view-normatividad view-id-normatividad view-display-id-page view-dom-id-3d4f52a075478c2320f97f5fdfa230a7">
+                                    <div class="view-header">
+                                        <table width="100%" class="menusagir">
+                                            <tr ng-repeat="row in menu.subMenu">
+                                                <td ng-repeat="detalle in row"  class="sagir_icon{{($parent.$index + 1) % 2 !== 0 ? 1 : 2}}{{$index + 1}}">
+                                                    <a href="{{detalle.url}}">{{detalle.nombre}}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>         
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

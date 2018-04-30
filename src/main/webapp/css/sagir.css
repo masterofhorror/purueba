@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18/10/2017, 11:17:33 AM
+    Author     : Hmoreno
+*/
+
+.panelServicio {
+    width: 98% !important;
+}
+
+.division {
+    margin-top: 0px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+
+.obligatorio {
+    color: red;
+}
+
+.datePicker {
+    cursor: pointer !important;
+    background-color: #FFF !important;
+}
+
+input[readonly].default-cursor {
+    cursor: pointer;
+}
+
+input[calendar] {
+    cursor: pointer !important;
+    background-color: white !important;
+} 
+ 

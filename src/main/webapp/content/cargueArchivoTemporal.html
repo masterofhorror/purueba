@@ -1,0 +1,206 @@
+<script type="text/javascript">
+    function clicRegistrar() {
+        $("#btnRegistrarSolc").click();
+    }
+
+    $(document).ready(function () {
+        $('#fechaExp').datepicker({
+            format: "dd/mm/yyyy"
+        });
+    });
+    var reader;
+    var progress = document.querySelector('.percent');
+    function abortRead() {
+        reader.abort();
+    }
+
+    function errorHandler(evt) {
+        switch (evt.target.error.code) {
+            case evt.target.error.NOT_FOUND_ERR:
+                alert('File Not Found!');
+                break;
+            case evt.target.error.NOT_READABLE_ERR:
+                alert('File is not readable');
+                break;
+            case evt.target.error.ABORT_ERR:
+                break; // noop
+            default:
+                alert('An error occurred reading this file.');
+        }
+        ;
+    }
+
+    function updateProgress(evt) {
+        // evt is an ProgressEvent.
+        if (evt.lengthComputable) {
+            var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+            // Increase the progress bar length.
+            if (percentLoaded < 100) {
+                progress.style.width = percentLoaded + '%';
+                progress.textContent = percentLoaded + '%';
+            }
+        }
+    }
+
+    function handleFileSelect(evt) {
+        $('#archivo').val();
+        $('#nombre').val();
+        var files = evt.target.files; // FileList object
+        var file = files[0];
+        if (file.size > '2000000') {
+            $('#files').scope().mensaje(file.size);
+            $('#files').val('');
+            $('#nombre').val('');
+        } else {
+            // Reset progress indicator on new file selection.
+            progress.style.width = '0%';
+            progress.textContent = '0%';
+            reader = new FileReader();
+            reader.onerror = errorHandler;
+            reader.onprogress = updateProgress;
+            reader.onabort = function (e) {
+                alert('File read cancelled');
+            };
+            reader.onloadstart = function (e) {
+                document.getElementById('progress_bar').className = 'loading';
+            };
+            reader.onload = function (e) {
+                // Ensure that the progress bar displays 100% at the end.
+                progress.style.width = '100%';
+                progress.textContent = '100%';
+                setTimeout(
+                        "document.getElementById('progress_bar').className='';",
+                        2000);
+            };
+            reader.onloadend = function (evt) {
+                if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+                    $('#archivo').val(btoa(evt.target.result));
+                    $('#nombre').val(escape(file.name));
+                    //document.getElementById('archivo').value = btoa(evt.target.result); 
+                    //document.getElementById('nombre').value = escape(file.name)
+                }
+            };
+            // Read in the image file as a binary string.
+            reader.readAsBinaryString(evt.target.files[0]);
+        }
+    }
+
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+        document.getElementById('files').addEventListener('change',
+                handleFileSelect, false);
+    } else {
+        ('#files').scope().validacionNavegador();
+    }
+
+    $("#files").fileinput({
+        'language': "es",
+        'showCaption': true,
+        'browseClass': 'btn btn-danger btn-sm',
+        'fileType': 'any',
+        'allowedFileExtensions': ['.zip'],
+        'showUpload': false
+    });
+</script>
+
+<div class="contenido col-md-12 panelServicio">
+
+    <div id="block-block-8" class="block block-block">
+        <div class="content">
+            <div class="bloqueH_actores">
+                <h3 class="titulo-linea">CARGUE TEMPORAL</h3>
+
+            </div>
+        </div>         
+    </div>
+    <div class="contenido col-md-12">
+
+        <div id="messages">
+            <div class="messages status ok" ng-show="verMsjOk">
+                <h4>Información</h4>
+                <span id="msgResultadoRegOk"></span>
+            </div>
+            <div class="messages status error" ng-show="verMsjError">
+                <h4>Error</h4>
+                <span id="msgResultadoRegError"></span>
+            </div>
+        </div>
+
+        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Cargue de Archivos</div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="block-system-main1" class="block block-system">
+                        <div class="content">
+                            <div class="row rowSpace" ng-class="{'has-error': errores.fileadjunto}">
+                                <div class="col-xs-3 col-sm-3">
+                                    <label for="archivo" class="control-label">
+                                        Cargar Archivo:
+                                    </label>
+                                    <br>
+                                    Formatos permitidos: .txt
+                                </div>
+                                <div class="col-xs-9 col-sm-9">
+                                    <input type="file" id="files" name="files"
+                                           size="2000000" data-preview-file-type="any"
+                                           accept=".txt" 
+                                           style="width: 50%"/> 
+                                    <input type="text"
+                                           id="archivo" name="archivo" ng-value="" ng-model="newsoporte"
+                                           ng-show="false"> 
+                                    <input type="text" id="nombre"
+                                           name="nombrec" ng-value="" ng-model="newsoporte"
+                                           ng-show="false">
+                                    <div id="progress_bar">
+                                        <div class="percent">0%</div>  
+                                    </div>
+                                    <span class="control-label" ng-show="errores.fileadjunto">{{errores.fileadjunto}}</span>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row derecha">
+                                <hr style="margin-top: 0px;"/>
+                                <button type="button" class="btn btn-danger" ng-click="buscar(1)">&nbsp Cargar &nbsp</button> 
+<!--                                <button type="button" class="btn btn-danger" name="btnuploadsuportecomment" id="btnuploadsuportecomment" ng-click="uploadSoporte()">
+                                    Cargar
+                                </button>-->
+                                <button type="button" class="btn btn-danger" ng-click="abrirBorrar()">&nbsp Borrar &nbsp</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<!--Dialog Confirmacion-->
+<div class="modal fade espera-modal-sm" id="dlgConfirm" tabindex="-1" role="dialog" aria-labelledby="dlgConfirm" aria-hidden="false">
+    <div class="modal-backdrop fade in" style="height: 100%;"></div>
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header">
+                    <div class="col-sm-10"><strong>Informaci&oacute;n</strong></div>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: justify;"><span id="msgConfirm"></span></div>
+                </div>
+                <div class="modal-footer">
+                    <input id="regemp-submit2" name="regemp-submit" value="Aceptar" 
+                           class="form-submit" type="submit" data-dismiss="modal" ng-click="borrar()"
+                           style="width: 110px; height: 40px">
+
+                    <input id="regemp-submit1" name="regemp-submit" value="Cancelar" 
+                           class="form-submit" type="submit" data-dismiss="modal"
+                           style="width: 110px; height: 40px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

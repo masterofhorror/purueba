@@ -1,0 +1,268 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+    "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" version="XHTML+RDFa 1.0" dir="ltr"
+      xmlns:content="http://purl.org/rss/1.0/modules/content/"
+      xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:sioc="http://rdfs.org/sioc/ns#"
+      xmlns:sioct="http://rdfs.org/sioc/types#"
+      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#" ng-app="SagirApp">
+
+    <head profile="http://www.w3.org/1999/xhtml/vocab">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="shortcut icon" href="sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
+        <meta name="RUNT" content="runt.com.co" />
+        <link rel="alternate" type="application/rss+xml" title="RUNT RSS" href="rss.xml" />
+        <title>RUNT</title>
+        <link href="sites/all/themes/runt/css/styleRUNT258d.css" rel="stylesheet" type="text/css"/> 
+        <link href="modules/system/fileinput.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/sagir.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css"/>
+        <link href="modules/comment/errores.css" rel="stylesheet" type="text/css"/>
+
+        <style type="text/css" media="all">
+            @import url("modules/system/system.base258d.css?ogsj44");
+            @import url("modules/system/system.menus258d.css?ogsj44");
+            @import url("modules/system/system.messages258d.css?ogsj44");
+            @import url("modules/system/system.theme258d.css?ogsj44");
+        </style>
+        <style type="text/css" media="all">
+            /*@import url("sites/all/modules/google_chart_tools/analytics_dashboard/analytics_dashboard258d.css?ogsj44");*/
+            /*@import url("sites/all/modules/calendar/css/calendar_multiday258d.css?ogsj44");*/
+            @import url("modules/comment/comment258d.css?ogsj44");
+            /*@import url("sites/all/modules/date/date_api/date258d.css?ogsj44");*/
+            /*@import url("sites/all/modules/date/date_popup/themes/datepicker.1.7258d.css?ogsj44");*/
+            @import url("modules/field/theme/field258d.css?ogsj44");
+            @import url("modules/node/node258d.css?ogsj44");
+            /*@import url("sites/all/modules/quiz/quiz258d.css?ogsj44");*/
+            @import url("sites/all/modules/responsive_dropdown_menus/theme/responsive-dropdown-menus258d.css?ogsj44");
+            @import url("modules/search/search258d.css?ogsj44");
+            @import url("modules/user/user258d.css?ogsj44");
+            @import url("sites/all/modules/views/css/views258d.css?ogsj44");
+            @import url("sites/all/modules/ckeditor/css/ckeditor258d.css?ogsj44");
+        </style>
+        <style type="text/css" media="all">
+            @import url("sites/all/modules/ctools/css/ctools258d.css?ogsj44");
+            /*@import url("sites/all/modules/date/date_views/css/date_views258d.css?ogsj44");*/
+        </style>
+        <style type="text/css" media="all">
+            @import url("sites/all/themes/runt/css/bootstrap.min258d.css");
+            @import url("sites/all/themes/runt/css/styleRUNT258d.css");
+            @import url("sites/all/themes/runt/css/styleRUNT_mobile258d.css?ogsj44");
+        </style>
+
+        <link href="css/datepicker.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    </head>
+
+    <body>
+        <div class="container">
+            <!--Contrenido del header-->
+            <div class="header" style="height: 170px;" ng-controller="homeCtrl">
+                <div class="logos col-md-7" style="padding-top: 40px;">
+                    <div class="logo1">
+                        <a href="index.html" title="RUNT"><img alt="RUNT" src="sites/all/themes/runt/logo.png"  class="img-responsive"/></a>            
+                    </div>
+                    <div class="logo2"><img src="sites/all/themes/runt/images/logoMINTRABAJO.png"></div>
+                </div>
+                <div class="auxiliar col-md-5">
+                    <div class="Hbloque_d1" style="padding-left: 100px;">
+                        <nav>
+                            <ul class="menu_header">
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="Hbloque_d2">
+                        <div class="concesion">
+                            <div>
+                                <img src="sites/default/files/images/formato/icoCandado.png">
+                            </div>
+                            <div class="texto_concesion">
+                                <a ng-href="#/logout">Cerrar Sesión</a>
+                            </div>
+                        </div>
+                    </div>
+                    Bienvenido: <strong style="text-transform: uppercase">{{usuario.nombres}}</strong> </br>
+                    Fecha Sistema: <strong>{{usuario.fechaSistema}}</strong> </br>
+                    Versión: <strong>1.0.0</strong>                 
+                </div>
+            </div>  
+
+
+            <div class="content-home">
+                <nav class="top_mainmenu" role="navigation" ng-controller="homeCtrl">
+                    <ul id="main-menu" class="menu">
+                        <li class="dropdown" ng-repeat="menu in opcionesMenu">
+                            <a class="dropdown-toggle" data-toggle="dropdown"> {{menu.nombre}} <b class="caret"></b></a>
+                            <ul class="dropdown-menu sub-menu tier-two" style="padding-top: 0px">
+                                <li  ng-repeat="detalle in menu.opcionesMenu"><a href="{{detalle.url}}"><span style="text-transform: uppercase;">{{detalle.nombre}}</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div ng-view></div>
+
+                <div class="modal fade espera-modal-sm" id="dlgEspera" tabindex="-1"
+                     role="dialog" aria-labelledby="dlgEspera" aria-hidden="false">
+                    <div class="modal-backdrop fade in" style="height: 100%;"></div>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="modal-header">
+                                    <div class="col-sm-10">
+                                        <strong>Consultando...</strong>
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <div style="text-align: justify;">
+                                        <img src="./sites/all/themes/runt/images/cargando.GIF" alt="cargando" /> <span>Por
+                                            favor espere mientras procesamos la información.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade espera-modal-sm" id="dlgConsulta"
+                     tabindex="-1" role="dialog" aria-labelledby="dlgConsulta"
+                     aria-hidden="false">
+                    <div class="modal-backdrop fade in" style="height: 100%;"></div>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="modal-header">
+                                    <div class="col-sm-10">
+                                        <strong>INFORMACIÓN</strong>
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <div style="text-align: justify;">
+                                        <span id="msgConsulta"> </span>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input id="regemp-submitr" name="regemp-submit" value="Aceptar"
+                                           class="form-submit" type="submit" data-dismiss="modal"
+                                           style="width: 110px; height: 40px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Footer del contenido--->
+                <div class="content_bottom">
+                    <div class="logos-inferior text-center" >  <div class="region region-logos">
+                            <div id="block-block-1" class="block block-block">
+                                <div class="content">
+                                    <p><img src="sites/default/files/images/formato/logosgobierno.jpg" alt="Mintransporte, Todos por un nuevo país y Gobierno en Línea" title="Mintransporte, Todos por un nuevo país y Gobierno en Línea" /></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+
+            <footer class="footer" style="padding-top: 0px;">
+                <div class="contacto_footer">
+                    <div class="contacto-izq"></div>
+                    <div class="contacto-der">
+                        <div class="region region-piecardder">
+                            <div id="block-block-4" class="block block-block">
+                                <div class="content">
+                                    <p>Av. Calle 26 No. 59 - 41/65<br />
+                                        Edificio Cámara Colombiana de Infraestructura (CCI) of. 405</p>
+                                    <p><a href="index.html">www.runt.com.co</a></p>
+                                    <p>PBX: (+57)(1) 587 0400</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="region region-pienav">
+                    <div id="block-block-3" class="block block-block">
+                        <div class="content">
+                            <ul class="menu_aux" style="padding: 0px;">
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
+                <div class="creditos_footer text-center" style="margin-top: 0px;">  <div class="region region-piecreditos">
+                        <div id="block-block-2" class="block block-block">
+                            <div class="content">
+                                <p><span>2017, Registro Único Nacional de Tránsito</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <div class="after_footer"></div>      
+
+        </div>
+
+        <script src="./lib/jquery.min.js" type="text/javascript"></script>
+        <script src="./lib/bootstrap.min.js"></script>
+        <script src="./lib/moment-with-langs.js"></script>
+        <!--<script src="./lib/bootstrap-datetimepicker.min.js"></script>-->
+        <script src="./lib/bootstrap-datepicker.js"></script>
+        <script src="./lib/locales/bootstrap-datepicker.es.js"></script>
+        <script src="lib/bootbox.min.js"></script>
+        <!--librerias-->
+        <script src="./lib/angular.min.js"></script>
+        <script src="./lib/angular-route.min.js"></script>
+        <!--<script src="./js/script-min.js"></script>-->
+        <script src="./js/app.js"></script>
+        <script src="./js/module.js"></script>
+        <!-- Autenticacion -->
+        <script src="./js/logoutCtrl.js"></script>
+        <!-- Usuario -->
+        <script src="./js/homeCtrl.js"></script>
+        <script src="./js/modificarPerfilCtrl.js"></script>
+        <!---Controller Sagir--->
+        <script src="./js/controllerRNA.js"></script>
+        <script src="./js/controllerRNC.js"></script>
+        <script src="./js/controllerCambioPropietario.js"></script>
+        <!--<script src="./js/controllerCambioFormatoPlaca.js"></script>--->
+        <script src="./js/controllerCambioResidencia.js"></script>
+        <!--<script src="./js/controllerCambioEstado.js"></script>--->
+        <script src="./js/modificacionesRealizadasCtrl.js"></script>
+        <script src="./js/marcarVehiculoCtrl.js"></script>
+        <script src="./js/controllerCargaRepotenciacion.js"></script>
+        <script src="./js/controllerConsultaRango.js"></script>
+        <script src="./js/controllerConsultaDatosMigrados.js"></script>
+        <script src="./js/controllerCargueArchivoTemporal.js"></script>
+        <script src="./js/controllerListarBoletin.js"></script>
+        <script src="./js/procesarCarguesProgramadosCtrl.js"></script>
+        <script src="./js/procesoMigracionCtrl.js"></script>
+        <script src="./js/asignacionRangosCtrl.js"></script>
+        <script src="./js/controllerConsultaDeclaImport.js"></script>
+        <script src="./js/reprocesarRNACtrl.js"></script>
+        <script src="./js/controllerExport.js"></script>
+        <script src="./js/controllerCarguePuntual.js"></script>
+        <script src="./js/controllerActualizacionInformacion.js"></script>
+        <script src="./js/controllerCargueCia.js"></script>
+
+
+        <script src="./lib/dirPagination.js"></script>
+
+        <!-- Componentes -->
+        <script src="./js/component/datepickerDirective.js"></script>
+        <script src="./js/component/expresionRegularValue.js"></script>
+        <script src="./js/component/httpInterceptorFactory.js"></script>
+        <script src="./js/component/upperCaseDirective.js"></script>
+        <script src="./js/component/Map.js"></script>
+        <!--Librerias cargue multiple-->
+        <script src="./lib/fileinput.min.js" type="text/javascript"></script>
+
+    </body>
+
+    <!-- Mirrored from www1.runt.com.co/web/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Nov 2016 21:55:34 GMT -->
+</html>

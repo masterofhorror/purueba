@@ -1,0 +1,531 @@
+<div class="contenido col-md-12 panelServicio">
+    <div id="block-block-8" class="block block-block">
+        <div class="content">
+            <div class="bloqueH_actores">
+                <h3 class="titulo-linea">ACTUALIZACION INFORMACIÓN</h3>
+
+            </div>
+        </div>         
+    </div>
+    <div class="contenido col-md-12">
+        <div id="messages">
+            <div class="messages status ok" ng-show="verMsjOk">
+                <h4>Información</h4>
+                <span id="msgResultadoRegOk"></span>
+            </div>
+            <div class="messages status error" ng-show="verMsjError">
+                <h4>Error</h4>
+                <span id="msgResultadoRegError"></span>
+            </div>
+        </div>
+
+        <div class="panel-body" ng-show="verBotones">
+            <div class="region region-content">
+                <div id="block-system-main" class="block block-system">
+                    <div class="content">
+
+                        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Filtros de búsqueda</div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="block-system-main1" class="block block-system">
+                                        <div class="content">
+                                            <div class="botones-actores">                        
+                                                <p class="btn-act">
+                                                    <a class="btnNA btn-otros" ng-click="estadoVehiculo()">Actualizar Estado</a>
+                                                    <a class="btnNA btn-otros" ng-click="formatoPlaca()">Formato de Placa</a>
+                                                    <a class="btnNA btn-otros" ng-click="servicio()">Actualizar Servicio</a>
+                                                    <!--<a class="btnNA btn-otros" ng-click="radicado()">Radicado</a>-->
+
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Criterio busqueda por código de carga-->
+        <div class="panel-body" ng-show="verEstadoVehiculo">
+            <div class="region region-content">
+                <div id="block-system-main" class="block block-system">
+                    <div class="content">
+
+                        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Filtros de búsqueda</div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="block-system-main1" class="block block-system">
+                                        <div class="content">
+                                            <div class="row rowSpace">
+                                                <div class="form-group" ng-class="{'has-error': errores.placaEstado}">
+                                                    <div class="col-xs-3 col-sm-3">
+                                                        <label for="placaEstado" class="control-label">
+                                                            Placa:
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-9 col-sm-9">
+                                                        <input id="placa" 
+                                                               style="width: 50%"
+                                                               ng-class="{'has-error': errores.placaEstado}"
+                                                               class="form-control input-sm required" 
+                                                               type="text" 
+                                                               ng-model="datosFormulario.placaEstado"
+                                                               maxlength="6"
+                                                               capitalize/> 
+                                                        <span ng-show="errores.placaEstado" class="control-label">{{errores.placaEstado}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                            <div class="row rowSpace">
+                                                <div class="form-group" ng-class="{'has-error': errores.estado}">
+                                                    <div class="col-xs-3 col-sm-3">
+                                                        <label for="estado" class="control-label">
+                                                            Estado:
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-9 col-sm-9">
+
+                                                        <select class="form-control" 
+                                                                ng-class="{'has-error': errores.estado}" 
+                                                                id="exampleSelect1" 
+                                                                style="width: 50%" 
+                                                                ng-model="datosFormulario.estado">
+                                                            <option value="">--Seleccione una opción--</option>
+                                                            <option value="1">ACTIVO</option>
+                                                            <option value="2">CANCELADO</option>
+                                                            <option value="3">TRASLADO</option>
+                                                        </select>
+                                                        <span ng-show="errores.estado" class="control-label">{{errores.estado}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br>
+
+                                            <div class="row rowSpace">
+                                                <div class="form-group" ng-class="{'has-error': errores.nroTicketEstado}">
+                                                    <div class="col-xs-3 col-sm-3">
+                                                        <label for="nroTicketEstado" class="control-label">
+                                                            Número de Ticket:
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-9 col-sm-9">
+                                                        <input id="placa" 
+                                                               style="width: 50%"
+                                                               ng-class="{'has-error': errores.nroTicketEstado}"
+                                                               class="form-control input-sm required" 
+                                                               type="text" 
+                                                               ng-model="datosFormulario.nroTicketEstado"
+                                                               maxlength="15"
+                                                               capitalize/>
+                                                        <span ng-show="errores.nroTicketEstado" class="control-label">{{errores.nroTicketEstado}}</span>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                            <br>
+
+                                            <div class="row derecha">
+                                                <hr style="margin-top: 0px;"/>
+
+                                                <button type="button" class="btn btn-danger" ng-click = "consultaEstado()">Consultar</button> 
+                                                <button type="button" class="btn btn-danger" ng-click="cambioEstado()">Cambiar Estado</button>
+                                                <button type="button" class="btn btn-danger" ng-click="regresar()">Regresar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body" ng-show="verConsultaEstado">
+                                    <div class="region region-content">
+                                        <div id="block-system-main" class="block block-system">
+                                            <div class="content">
+                                                <div class="table-responsive">
+                                                    <table id="mostrarInfo" ng-table="resultadosC" style="border: 1px" class="table table-striped table-bordered" cellspacing="0" width="100%">     
+                                                        <tr>
+                                                            <th><div align="CENTER"><font color="#CC6600">PLACA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ID VEHÍCULO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">FECHA MATRICULA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ESTADO ACTUAL</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MIGRADO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ESTADO MIGRACIÓN</font></div></th>
+                                                        </tr>
+
+                                                        <!--<tr dir-paginate="resultadoConsulta in resultadoConsultaEstado | filter:search | itemsPerPage:pageSize" current-page="currentPage">-->
+                                                        <tr> 
+                                                            <td><div align="CENTER">{{resultadoConsultaEstado.automotorPlacaNumplaca}}</div></td>
+                                                            <td><div align="CENTER">{{resultadoConsultaEstado.automotorNroregveh}}</div></td>
+                                                            <td><div align="CENTER">{{resultadoConsultaEstado.automotorFechregis| date:'yyyy-MM-dd'}}</div></td>
+                                                            <td><div align="CENTER">{{resultadoConsultaEstado.automotorEstavehicNombre}}</div></td>
+                                                            <td><div align="CENTER">{{resultadoConsultaEstado.automotorMigrado}}</div></td> 
+                                                            <td><div align="CENTER">{{resultadoConsultaEstado.automotorEstamigr}}</div></td>
+                                                        </tr>
+                                                    </table> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin criterio busqueda por código de carga-->
+
+        <!--Criterio busqueda por tipo de registro-->
+        <div class="panel-body" ng-show="verFormatoPlaca">
+            <div class="region region-content">
+                <div id="block-system-main" class="block block-system">
+                    <div class="content">
+
+                        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Filtros de búsqueda</div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div id="block-system-main1" class="block block-system">
+                                        <div class="content">
+                                            <div class="row rowSpace">
+                                                <div class="form-group" ng-class="{'has-error': errores.placaFormato}">
+                                                    <div class="col-xs-3 col-sm-3">
+                                                        <label for="placaFormato" class="control-label">
+                                                            Placa:
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-9 col-sm-9">
+                                                        <input id="placa" 
+                                                               style="width: 50%"
+                                                               ng-class="{'has-error': errores.placaFormato}"
+                                                               class="form-control input-sm required" 
+                                                               type="text" 
+                                                               ng-model="datosFormulario.placaFormato"
+                                                               maxlength="6"
+                                                               capitalize/> 
+                                                        <span ng-show="errores.placaFormato" class="control-label">{{errores.placaFormato}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br>
+
+                                            <div class="row rowSpace">
+                                                <div class="form-group" ng-class="{'has-error': errores.nroTicketFormato}">
+                                                    <div class="col-xs-3 col-sm-3">
+                                                        <label for="nroTicketFormato" class="control-label">
+                                                            Número de Ticket:
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-9 col-sm-9">
+                                                        <input id="placa" 
+                                                               style="width: 50%"
+                                                               ng-class="{'has-error': errores.nroTicketFormato}"
+                                                               class="form-control input-sm required" 
+                                                               type="text" 
+                                                               ng-model="datosFormulario.nroTicketFormato"
+                                                               maxlength="15"
+                                                               capitalize/>
+                                                        <span ng-show="errores.nroTicketFormato" class="control-label">{{errores.nroTicketFormato}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>	
+
+                                            <br>
+
+                                            <div class="row derecha">
+                                                <hr style="margin-top: 0px;"/>
+
+                                                <button type="button" class="btn btn-danger" ng-click = "consulta(datosFormulario.placaFormato)">Consultar</button> 
+                                                <button type="button" class="btn btn-danger" ng-click="formatoNuevoAAntiguo()">De formato nuevo a antiguo</button>
+                                                <button type="button" class="btn btn-danger" ng-click="formatoAntiguoANuevo()">De formato antiguo a nuevo</button>
+                                                <button type="button" class="btn btn-danger" ng-click="regresar()">Regresar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body" ng-show="verConsulta">
+                                    <div class="region region-content">
+                                        <div id="block-system-main" class="block block-system">
+                                            <div class="content">
+                                                <div class="table-responsive">
+                                                    <table id="mostrarInfo" ng-table="resultadosC" style="border: 1px" class="table table-striped table-bordered" cellspacing="0" width="100%">     
+                                                        <tr>
+                                                            <th><div align="CENTER"><font color="#CC6600">PLACA RNA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">PLACA MIGRACIÓN</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">SECRETARIA</font></div></th>
+                                                        <!--<th><div align="CENTER"><font color="#CC6600">MODALIDAD</font></div></th>-->
+                                                        <th><div align="CENTER"><font color="#CC6600">ESTADO CARGUE</font></div></th>
+                                                        <!--<th><div align="CENTER"><font color="#CC6600">DETALLE</font></div></th>-->
+                                                        </tr>
+                                                        <tr dir-paginate="resultadoConsulta in resultadoConsultaFormato | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                                            <td><div align="CENTER">{{resultadoConsulta.placaProduccion}}</div></td>
+                                                            <td><div align="CENTER">{{resultadoConsulta.placaMigrada}}</div></td>
+                                                            <td><div align="CENTER">{{resultadoConsulta.idSecretaria}}</div></td>
+                                                            <!--<td><div align="CENTER">{{resultadoConsulta.descModalidad}}</div></td>-->
+                                                            <td><div align="CENTER">{{resultadoConsulta.estadoCargue}}</div></td>
+<!--                                                            <td>
+                                                                <div align = "center">
+                                                                    <button type="button" class="btn btn-default" ng-click = "consultaDetalle(resultadoConsulta.placaFormato, resultadoConsulta.boletin)" data-toggle="modal" data-target=".bs-example-modal-lg">    
+                                                                        <img src="sites/all/themes/runt/images/iconos/icons8-Plus-48.png" width="30" height="30"> 
+                                                                    </button> 
+                                                                </div>
+                                                            </td>                   -->
+                                                        </tr>
+                                                    </table> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contenido col-md-12">
+                                <div class="panel-body" ng-show="verDetalle">
+                                    <div class="region region-content">
+                                        <div id="block-system-main" class="block block-system">
+                                            <div class="content">
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" ng-click="consulta(datosFormulario.placaFormato)" data-dismiss="modal">Volver</button>
+                                                </div>
+                                                <div class="table-responsive">
+                                                    <table ng-table="resultadosB" style="border: 1px" class="table table-striped table-bordered" cellspacing="0" width="100%">     
+                                                        <tr>
+                                                            <th><div align="CENTER"><font color="#CC6600">ID ORGANISMO DE TRANSITO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">SECRETARIA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">PLACA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MARCA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">LINEA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CLASE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CARROCERIA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MODALIDAD</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CILINDRAJE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MODELO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MOTOR</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">SERIE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CHASIS</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CLASE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CAPACIDAD DE TONELADA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CAPACIDAD DE PASAJEROS</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ESTADO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MIGRADO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CODIGO DE CARGA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">RADICADO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">FECHA DE CARGA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ID FOLIO</font></div></th>     
+                                                        <th><div align="CENTER"><font color="#CC6600">ESTADO DEL CARGUE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">BOLETIN</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">DESC. CLASE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">DESC. MODALIDAD</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">INDVALIDO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">DESC. ESTADO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">TIPOCARRO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ACTUALIZA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CAMBIO ESTADO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CAMBIO FORMATO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CAMBIO SERVICIO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ID SERVICIO</font></div></th>   
+                                                        </tr>    
+                                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                                            <td>{{resultado.idOt}}</td>
+                                                            <td>{{resultado.secretaria}}</td>
+                                                            <td>{{resultado.placa}}</td>
+                                                            <td>{{resultado.marca}}</td>
+                                                            <td>{{resultado.linea}}</td>
+                                                            <td>{{resultado.clase}}</td>
+                                                            <td>{{resultado.carroceria}}</td>
+                                                            <td>{{resultado.modalidad}}</td>
+                                                            <td>{{resultado.cilindraje}}</td>
+                                                            <td>{{resultado.modelo}}</td>
+                                                            <td>{{resultado.motor}}</td>
+                                                            <td>{{resultado.serie}}</td>
+                                                            <td>{{resultado.chasis}}</td>
+                                                            <td>{{resultado.capacidadToneladas}}</td>
+                                                            <td>{{resultado.capacidadPasaj}}</td>
+                                                            <td>{{resultado.estado}}</td>
+                                                            <td>{{resultado.migrado}}</td>
+                                                            <td>{{resultado.codCarga}}</td>
+                                                            <td>{{resultado.radicado}}</td>
+                                                            <td>{{resultado.fechaCarga| date:'dd/MM/yyyy'}}</td>
+                                                            <td>{{resultado.idFolio}}</td>
+                                                            <td>{{resultado.estadoCargue}}</td>
+                                                            <td>{{resultado.boletin}}</td>
+                                                            <td>{{resultado.descClase}}</td>
+                                                            <td>{{resultado.descModalidad}}</td>
+                                                            <td>{{resultado.indValido}}</td>
+                                                            <td>{{resultado.descEstado}}</td>
+                                                            <td>{{resultado.tipoCarro}}</td>
+                                                            <td>{{resultado.actualiza}}</td>
+                                                            <td>{{resultado.cambioEstado}}</td>
+                                                            <td>{{resultado.cambioFormato}}</td>
+                                                            <td>{{resultado.cambioServicio}}</td>
+                                                            <td>{{resultado.idServicio}}</td>                                
+                                                        </tr>
+                                                    </table> 
+                                                </div>
+
+                                                <!--                    </div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin consulta por código de carga-->
+        <!--Cambio tipo de servicio-->
+        <div class="panel-body" ng-show="verServicio">
+            <div class="region region-content">
+                <div id="block-system-main" class="block block-system">
+                    <div class="content">
+
+                        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Filtros de búsqueda</div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="block-system-main1" class="block block-system">
+                                        <div class="content">
+                                            <div class="row rowSpace">
+                                                <div class="form-group" ng-class="{'has-error': errores.placaServicio}">
+                                                    <div class="col-xs-3 col-sm-3">
+                                                        <label for="placaServicio" class="control-label">
+                                                            Placa:
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-9 col-sm-9">
+                                                        <input id="placa" 
+                                                               style="width: 50%"
+                                                               ng-class="{'has-error': errores.placaServicio}"
+                                                               class="form-control input-sm required" 
+                                                               type="text" 
+                                                               ng-model="datosFormulario.placaServicio"
+                                                               maxlength="6"
+                                                               capitalize/> 
+                                                        <span ng-show="errores.placaServicio" class="control-label">{{errores.placaServicio}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                            <div class="row rowSpace">
+                                                <div class="form-group" ng-class="{'has-error': errores.servicio}">
+                                                    <div class="col-xs-3 col-sm-3">
+                                                        <label for="servicio" class="control-label">
+                                                            Tipo de servicio:
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-9 col-sm-9">
+                                                        <select class="form-control" ng-class="{'has-error': errores.servicio}" id="exampleSelect1" style="width: 50%" ng-model="datosFormulario.servicio">
+                                                            <option value="">--Seleccione una opción--</option>
+                                                            <option value="3">DIPLOMÁTICO</option>
+                                                            <option value="4">OFICIAL</option>
+                                                            <option value="1">PARTICULAR</option>
+                                                            <option value="2">PÚBLICO</option>
+                                                            <option value="8">PARTICULAR-PÚBLICO-OFICIAL</option>
+                                                        </select>
+                                                        <span ng-show="errores.servicio" class="control-label">{{errores.servicio}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br>
+
+                                            <div class="row rowSpace">
+                                                <div class="form-group" ng-class="{'has-error': errores.nroTicketServicio}">
+                                                    <div class="col-xs-3 col-sm-3">
+                                                        <label for="nroTicketServicio" class="control-label">
+                                                            Número de Ticket:
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-xs-9 col-sm-9">
+                                                        <input id="placa" 
+                                                               style="width: 50%"
+                                                               ng-class="{'has-error': errores.nroTicketServicio}"
+                                                               class="form-control input-sm required" 
+                                                               type="text" 
+                                                               ng-model="datosFormulario.nroTicketServicio"
+                                                               maxlength="15"
+                                                               capitalize/>
+                                                        <span ng-show="errores.nroTicketServicio" class="control-label">{{errores.nroTicketServicio}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>	
+
+                                            <br>
+                                            <div class="row derecha">
+                                                <hr style="margin-top: 0px;"/>
+
+                                                <button type="button" class="btn btn-danger" ng-click = "consultaVehiculo(datosFormulario.placaServicio)">Consultar</button> 
+                                                <button type="button" class="btn btn-danger" ng-click="cambioServicio()">Cambiar Servicio</button>
+                                                <button type="button" class="btn btn-danger" ng-click="regresar()">Regresar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body" ng-show="verConsultaServicio">
+                                    <div class="region region-content">
+                                        <div id="block-system-main" class="block block-system">
+                                            <div class="content">
+                                                <div class="table-responsive">
+                                                    <table id="mostrarInfo" ng-table="resultadosC" style="border: 1px" class="table table-striped table-bordered" cellspacing="0" width="100%">     
+                                                        <tr>
+                                                            <th><div align="CENTER"><font color="#CC6600">PLACA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ID VEHÍCULO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ESTADO VEHICULO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MIGRADO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ESTADO MIGRACIÓN</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">SERVICIO ACTUAL</font></div></th>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td><div align="CENTER">{{resultadoConsultaServicio.automotorPlacaNumplaca}}</div></td>
+                                                            <td><div align="CENTER">{{resultadoConsultaServicio.automotorNroregveh}}</div></td>
+                                                            <td><div align="CENTER">{{resultadoConsultaServicio.automotorEstavehicNombre}}</div></td>
+                                                            <td><div align="CENTER">{{resultadoConsultaServicio.automotorMigrado}}</div></td>
+                                                            <td><div align="CENTER">{{resultadoConsultaServicio.automotorEstamigr}}</div></td>
+                                                            <td><div align="CENTER">{{resultadoConsultaServicio.tipoServicio.nombre| uppercase}}</div></td> 
+                                                        </tr>
+                                                    </table> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin cambio de servicio-->
+
+    </div>
+</div>

@@ -1,0 +1,278 @@
+<script type="text/javascript">
+    function clicRegistrar() {
+    $("#btnRegistrarSolc").click();
+    }
+
+
+    var reader;
+    var progress = document.querySelector('.percent');
+    function abortRead() {
+    reader.abort();
+    }
+
+    function errorHandler(evt) {
+    switch (evt.target.error.code) {
+    case evt.target.error.NOT_FOUND_ERR:
+            alert('File Not Found!');
+    break;
+    case evt.target.error.NOT_READABLE_ERR:
+            alert('File is not readable');
+    break;
+    case evt.target.error.ABORT_ERR:
+            break; // noop
+    default:
+            alert('An error occurred reading this file.');
+    }
+    ;
+    }
+
+    function updateProgress(evt) {
+        // evt is an ProgressEvent.
+        if (evt.lengthComputable) {
+            var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+            // Increase the progress bar length.
+            if (percentLoaded < 100) {
+                progress.style.width = percentLoaded + '%';
+                progress.textContent = percentLoaded + '%';
+            }
+        }
+    }
+
+    function handleFileSelect(evt) {
+    $('#archivo').val();
+    $('#nombre').val();
+    var files = evt.target.files; // FileList object
+    var file = files[0];
+    if (file.size > '2000000') {
+    $('#files').scope().mensaje(file.size);
+    $('#files').val('');
+    $('#nombre').val('');
+    } else {
+    // Reset progress indicator on new file selection.
+    progress.style.width = '0%';
+    progress.textContent = '0%';
+    reader = new FileReader();
+    reader.onerror = errorHandler;
+    reader.onprogress = updateProgress;
+    reader.onabort = function (e) {
+        alert('File read cancelled');
+    };
+    reader.onloadstart = function (e) {
+    document.getElementById('progress_bar').className = 'loading';
+    };
+    reader.onload = function (e) {
+    // Ensure that the progress bar displays 100% at the end.
+    progress.style.width = '100%';
+    progress.textContent = '100%';
+    setTimeout(
+            "document.getElementById('progress_bar').className='';",
+            2000);
+    };
+    reader.onloadend = function (evt) {
+    if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+    $('#archivo').val(btoa(evt.target.result));
+    $('#nombre').val(escape(file.name));
+    //document.getElementById('archivo').value = btoa(evt.target.result); 
+    //document.getElementById('nombre').value = escape(file.name)
+    }
+    };
+    // Read in the image file as a binary string.
+    reader.readAsBinaryString(evt.target.files[0]);
+    }
+    }
+
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+    document.getElementById('files').addEventListener('change',
+            handleFileSelect, false);
+    } else {
+    ('#files').scope().validacionNavegador();
+    }
+
+    $("#files").fileinput({
+    'language': "es",
+            'showCaption': true,
+            'browseClass': 'btn btn-danger btn-sm',
+            'fileType': 'any',
+            'allowedFileExtensions': ['.zip'],
+            'showUpload': false
+    });</script>
+
+<div class="contenido col-md-12 panelServicio">
+
+    <div id="block-block-8" class="block block-block">
+        <div class="content">
+            <div class="bloqueH_actores">
+                <h3 class="titulo-linea">CARGUE CIA</h3>
+
+            </div>
+        </div>         
+    </div>
+    <div class="contenido col-md-12">
+
+        <div id="messages">
+            <div class="messages status ok" ng-show="verMsjOk">
+                <h4>Información</h4>
+                <span id="msgResultadoRegOk"></span>
+            </div>
+            <div class="messages status error" ng-show="verMsjError">
+                <h4>Error</h4>
+                <span id="msgResultadoRegError"></span>
+            </div>
+        </div>
+
+        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Cargue de Archivos CIA</div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="block-system-main1" class="block block-system">
+                        <div class="content">
+                            <div class="row rowSpace">
+                                <div class="form-group" ng-class="{'has-error': errores.nombreCia}">
+                                    <div class="col-xs-3 col-sm-3">
+                                        <label for="nombreCia" class="control-label">
+                                            CIA a procesar:
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9">
+                                        <div class="form-group" ng-class="{'has-error': errores.nombreCia}">
+                                            <select class="form-control" 
+                                                    id="sel" 
+                                                    name="name" 
+                                                    style="width:320px" 
+                                                    ng-model="datosFormulario.nombreCia" 
+                                                    ng-options="cia.nombreCia for cia in listarCia"
+                                                    value="{{cia.nombreCia}}">
+                                            </select>
+                                            <span ng-show="errores.nombreCia" class="control-label">{{errores.nombreCia}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row rowSpace">
+                                <div class="form-group" ng-class="{'has-error': errores.fechaEnvio}">
+                                    <div class="col-xs-3 col-sm-3">
+                                        <label for="fechaEnvio" class="control-label">
+                                            Fecha Envio:
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9 ">
+                                        <div class='input-group date' style="width: 50%">
+                                            <input class="form-control" 
+                                                   calendar
+                                                   type='text'
+                                                   endDate="{{fechaActual}}"
+                                                   id="fechaEnvio"
+                                                   readonly
+                                                   ng-class="{'has-error': errores.fechaEnvio}"
+                                                   ng-model="datosFormulario.fechaEnvio">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                        </div>
+                                        <span ng-show="errores.fechaEnvio" class="control-label">{{errores.fechaEnvio}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row rowSpace" ng-class="{'has-error': errores.fileadjunto}">
+                                <div class="col-xs-3 col-sm-3">
+                                    <label for="archivo" class="control-label">
+                                        Cargar Archivo:
+                                    </label>
+                                    <br>
+                                    Formatos permitidos: .p7z
+                                </div>
+                                <div class="col-xs-9 col-sm-9">
+                                    <input type="file" id="files" name="files"
+                                           size="2000000" data-preview-file-type="any"
+                                           accept=".p7z" 
+                                           style="width: 50%"/> 
+                                    <input type="text"
+                                           id="archivo" name="archivo" ng-value="" ng-model="newsoporte"
+                                           ng-show="false"> 
+                                    <input type="text" id="nombre"
+                                           name="nombrec" ng-value="" ng-model="newsoporte"
+                                           ng-show="false">
+                                    <div id="progress_bar">
+                                        <div class="percent">0%</div>  
+                                    </div>
+                                    <span class="control-label" ng-show="errores.fileadjunto">{{errores.fileadjunto}}</span>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div id="block-system-main" class="block block-system" ng-show="verResultado">
+                                <div class="content">
+
+                                    <div class="table-responsive">
+                                        <table style="border: 1px" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                            <tr> 
+                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CODIGO DE CARGA</font></div></th>
+                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.codCarga}}</td>
+                                            </tr>
+                                            <tr> 
+                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NOMBRE DE ARCHIVO</font></div></th>
+                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.nombreArchivo}}</td>
+                                            </tr>
+                                            <tr> 
+                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ESTADO CARGUE</font></div></th>
+                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.estado}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <button type="button" class="btn btn-danger" ng-click="boletin(resultado.codCarga)">&nbsp Generar Boletin &nbsp</button> 
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row derecha">
+                                <hr style="margin-top: 0px;"/>
+                                <button type="button" class="btn btn-danger" ng-click="bolUnico(1)">&nbsp Listar Boletin &nbsp</button>
+                                <button type="button" class="btn btn-danger" ng-click="buscar(1)">&nbsp Procesar &nbsp</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="panel panel-default" ng-show="verListar">
+                <div class="panel-body">
+                    <div id="block-system-main1" class="block block-system">
+                        <div class="content">
+                            <div class="row rowSpace" ng-class="errores.bolUnico ? 'has-error' : ''">
+                                <div class="col-xs-2 col-sm-2">
+                                    <label for="bolUnico" class="control-label">
+                                        Codigo de carga:
+                                    </label>
+                                </div>
+                                <div class="col-xs-9 col-sm-9">
+                                    <input id="BolUnico" 
+                                           style="width: 20%"
+                                           class="form-control input-sm required" 
+                                           type="text" 
+                                           ng-model="datosFormulario.bolUnico"
+                                           capitalize
+                                           maxlength="6"/>
+                                    <span class="control-label" ng-show="errores.bolUnico">{{errores.bolUnico}}</span>
+                                </div>
+                                <br>
+
+                                <div class="row derecha">
+                                    <div class="col-xs-12 col-sm-15">
+                                        <button type="button" class="btn btn-danger" ng-click="impBolUnico(datosFormulario.bolUnico)">&nbsp Generar Boletin &nbsp</button>
+                                    </div>
+                                </div>
+                            </div>	
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

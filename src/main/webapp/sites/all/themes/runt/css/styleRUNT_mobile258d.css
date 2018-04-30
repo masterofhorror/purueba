@@ -1,0 +1,1094 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Menú */
+@media (min-width: 960px){
+	#main-menu {display:inline-block; width:100%; margin:0; padding:0; padding-top:1px; padding-bottom:5px; text-align:center;}
+	#menu-item-218, #menu-item-445, #menu-item-446, #menu-item-447, #menu-item-448, #menu-item-449 {text-transform:uppercase; padding:0 20px; border-left:1px solid rgba(171,171,171,1.00);}
+	#menu-item-218 {border-left:none;}
+	#menu-item-445 {}
+	#menu-item-446 {}
+	#menu-item-447 {}
+	#menu-item-448 {}
+	#menu-item-449 {}
+	#main-menu li a {text-decoration:none; color:#000;}
+	#main-menu li a:hover {color:#d0112b;}
+	#main-menu li ul {text-align:left; text-transform:none; min-width:350px; margin:0; padding:0; padding-top:10px;}
+	#menu-item-449 ul {min-width:200px !important;}
+	#main-menu li ul li {border-bottom:1px solid #ccc; display:block; margin:0; padding:0; background-color:#f5f5f5; border-right:1px solid #ccc; border-left:1px solid #ccc;}
+	#main-menu li ul li a {display:block; padding:8px; font-size:12px;}
+	#main-menu li ul li a:hover {background-color:#ddd;}
+	#main-menu li ul li ul {margin:0; padding:0; border-left:4px solid #d0112b;}
+	#main-menu li ul li ul li {border-left:none;}
+	#main-menu li ul .nolink {display:block; padding:8px; font-size:12px; color:#666;}
+	#main-menu li ul li.first {border-top:1px solid #ccc;}
+	
+}
+
+
+/* Customize container */
+@media (min-width: 768px) {
+	
+ 
+}
+@media (min-width: 992px){
+.container {
+width: 1020px;
+}
+}
+@media (min-width: 1200px){
+	.container {
+	max-width: 1020px;
+	}
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+@media screen and (max-width: 992px) {
+ .logos {
+padding-top: 10px;
+text-align:center;
+height:100px;
+}
+.auxiliar {
+text-align: center;
+padding-left: 0;
+padding-right: 0;
+padding-top: 10px;
+}
+.Hbloque_d1 .content, .Hbloque_d2 .content {
+    margin-top: 0;
+    padding: 0;
+}
+#menu-item-218, #menu-item-445, #menu-item-446, #menu-item-447, #menu-item-448, #menu-item-449 {
+	padding:0 10px;
+	font-size:13px;
+	}
+.Hbloque_d1{
+	display:inline-block;
+	padding-right: 0;
+	text-align: center;
+	margin-left: -30px;
+	}
+.Hbloque_d2{
+	display:inline-block;
+	text-align: right;
+	}
+.botones-actores .btn-act {
+	text-align: center;
+	}
+#block-block-12, #block-views-estad-sticas-block-1 {
+    width: 23%;
+    display: inline-block;
+    overflow: hidden;
+}
+#block-views-calendario-de-eventos-block-1 .mini-day-off {
+    /*height: 35px;*/
+}
+.view .date-nav-wrapper .date-nav {
+    margin-bottom: 0px;
+}
+.menu_aux {
+    -webkit-padding-start: 0;
+}
+#block-views-calendario-de-eventos-block-1 .mini tbody td {
+    /*height: 35px;*/
+}
+td.today {
+    background: url(../images/japon.jpg) center;
+    background-size: cover;
+	background-position-y: -3px;
+}
+.concesion {
+ padding-top: 0px; 
+}
+.bloque-tabs{
+	margin-top:20px;
+	}
+.captcha {
+margin-left: 38%;
+}
+.actualizados2 {
+padding: 0 250px;
+}
+.creditos_footer {
+    padding: 5px 0;
+}
+.creditos_footer .content {
+    margin-top: 10px;
+}
+.calendar-calendar tr td.today, .calendar-calendar tr.odd td.today, .calendar-calendar tr.even td.today {
+    background-color: #FFFFFF;
+}
+td.today {
+    background: url(../images/japon.jpg) center no-repeat;
+    background-size: contain;
+    background-position-y: 0px;
+}
+.breadcrumb_box {
+	margin: 0;
+    margin-left: 20px;
+}
+
+	}
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 800px) { 
+  .responsive-menu li {
+    display: inline-block !important;
+	
+}
+.responsive-menu {
+	width:100%; 
+	margin:0; 
+	padding:0; 
+	padding-top:30px; 
+	padding-bottom:25px; 
+	text-align:center;
+}
+
+  }
+
+/* Responsive: Portrait tablets and up */
+@media screen and (max-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+	padding-left: 0px;
+    padding-right: 0px;
+  }
+.logos {
+padding-top: 10px;
+text-align:left;
+}
+
+
+#block-views-noticias-y-archivos-block-3, #block-views-noticias-y-archivos-block-4, #block-views-noticias-y-archivos-block-5, #block-views-noticias-y-archivos-block-6 {width:100%;}
+
+
+.page-calendario-de-eventos-dia .col-md-8 .view-id-calendario_de_eventos .date-heading h3 {padding-left:20px;}
+
+.breadcrumb_box:before{
+	content: "";
+  position: absolute;
+  border-radius: 50%;
+	width: 10px;
+	height: 10px; 
+  top: 40%;
+  background:#d0112b;
+  margin-left:-15px;
+	}
+	
+.responsive-menu {margin-bottom:20px;}
+	
+.tier-two, .tier-three {border:1px solid #ddd; width:100%;}
+.node-article .field-name-body img {width:100% !important; height:auto !important;}
+
+.menu-toggle {border:1px solid #ddd; margin-left:20px;}
+
+
+.notificaciones {padding:10px; background-image:none;}
+.notificaciones .carta {display:none;}
+
+.node-type-article .field-name-field-fecha-de-publocaci-n {float:none; top:0; margin-bottom:12px;}
+
+.auxiliar {
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 10px;
+	margin-left: 0;
+    display: block;
+    height: 95px;
+}
+.Hbloque_d1{
+	display:block;
+	text-align: left;
+	float: left;
+	padding-top: 18px;
+    padding-left: 15px;
+	margin-left: 0;
+	}
+.Hbloque_d2{
+	display:block;
+	text-align: right;
+	float: right;
+	padding-right: 20px;
+	}
+.concesion {
+ padding-top: 0px; 
+}
+.contacto {
+background: #d0112b;
+text-align: center;
+display: block !important;
+}
+.sidebar_left {
+    padding-right: 0;
+}
+.region-contentizq34 .content, .region-contentizq33 .content {
+    border-top: 1px solid #ccc !important;
+    border-right: 1px solid #ccc !important;
+    border-left: 1px solid #ccc !important;
+}
+#block-system-main-menu, #block-menu-menu-concesi-n, #block-menu-menu-ciudadano, #block-menu-menu-organismos-de-tr-nsito, #block-menu-menu-ministerio-de-transporte, #block-menu-menu-alcadias, #block-menu-menu-organismos-de-tr-nsito-a, #block-menu-menu-direcciones-territoriales {
+    left: 0;
+}
+.twitter {
+text-align: center;
+display: block !important;
+}
+.calendario{
+	display: block !important;
+	text-align: center;
+	float: none !important;
+	}
+.fancy_links{
+	display: block !important;
+	text-align: center;
+	float: none !important;
+	}
+.bloque-tabs{
+	margin-top:20px;
+	}
+.col-md-8, .col-md-4, .footer{
+	/*padding-right:10px;
+	padding-left:10px;*/
+	}
+.content-home .region-hizq8 {
+	padding-right: 15px;
+    padding-left: 15px;
+	}
+.contenido {
+	padding: 0;
+	}
+.page-contact h2, .contenido h2 {
+    margin-left: 0;
+}
+.page-contact #block-system-main .content {
+	padding-left: 20px;
+    padding-right: 6px;
+	}
+#block-views-taxonomias-y-menus-block {
+    width: 100%;
+	left: 0;
+}
+#block-views-taxonomias-y-menus-block table td {
+    padding: 3px;
+	display: table-cell;
+	text-transform: capitalize;
+	font-size: 10px;
+}
+
+#block-views-taxonomias-y-menus-block-1 {
+    width: 100%;
+	left: 0;
+}
+#block-views-taxonomias-y-menus-block-1 table td {
+    padding: 3px;
+	display: table-cell;
+	text-transform: capitalize;
+	font-size: 10px;
+}
+
+.top_mainmenu .responsive-menu li {
+    display: block;
+	border-top: 1px solid #ccc;
+    width: 100%;
+    padding: 0 !important;
+    background-color: #eee;
+}
+.top_mainmenu .responsive-menu li a, .top_mainmenu .responsive-menu li span.nolink {
+    display: block;
+    width: 100%;
+    padding: 6px !important;
+}
+.top_mainmenu .responsive-menu li ul {
+	-webkit-padding-start: 0;
+	}
+ul#main-menu {
+    padding: 20px 20px 0px 20px !important;
+}
+#menu-item-218, #menu-item-445, #menu-item-446, #menu-item-447, #menu-item-448, #menu-item-449 {
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	}
+#menu-item-449 {
+	border-bottom: 1px solid #ccc;
+	}
+#quicktabs-registro_nacional_de_empresas_de .item-list {
+    left: 0;
+    width: 100%;
+}
+ul.quicktabs-tabs.quicktabs-style-arrows {
+    padding: 0 !important;
+}
+#quicktabs-registro_nacional_de_empresas_de .item-list ul li {
+    padding: 12px 7px;
+    margin: 0;
+}
+#quicktabs-registro_nacional_de_empresas_de .attachment-after {
+    width: 100%;
+    display: block;
+    padding-left: 0;
+}
+.views-row.views-row-1.views-row-odd.views-row-first.views-row-last.bloque-contenido.bloque-scroll {
+    height: auto;
+    overflow-y: visible;
+}
+.barra_roja {
+    right: 0;
+	text-align: center;
+	/*margin-left: -20px;*/
+}
+#block-twitter-block-1 {
+    text-align: center;
+}
+.contenido.col-md-9 img, .img-responsive {
+    margin: 0 auto;
+}
+#block-quicktabs-glosario ul.quicktabs-tabs.quicktabs-style-basic li {
+    padding: 15px 25px;
+}
+.menu-toggle .toggle-help {
+    width: 150px;
+}
+.contenido.col-md-9 img.img-responsive {
+    /*margin-left: 0 !important;
+    margin-right: 0 !important;*/
+	margin-left:20px;
+	margin-right:20px;
+	margin-bottom:20px;
+}
+.contenido.col-md-9 .views-row img.img-responsive {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+	padding:20px;
+}
+#block-views-calendario-de-eventos-block-3 {
+    padding-left: 0;
+    right: 0;
+}
+.node-type-article h2 {
+    margin-left: 0;
+    padding-right: 0;
+}
+.node-normatividad, .node-documentos, .node-article {
+    margin-left: 0;
+}
+
+/* Margenes Contenidos */
+.contenido .content {
+	padding-right: 0;
+	}
+.page-calendario-de-eventos-dia .col-md-8 .view-id-calendario_de_eventos {
+    /*margin-left: -35px;
+    margin-right: -15px;*/
+	margin-left: -20px;
+    margin-right: 0;
+	}
+.default-fila {
+	padding-right: 0px;
+    padding-left: 0px;
+	}
+.page-directorio-de-actores .form-item-title, .page-directorio-de-actores .form-item-title input, #edit-field-ciudad-municipio-value, .view-directorio-de-actores #edit-field-tipo-value {
+    width: 100%;
+}
+.views-exposed-form .views-exposed-widget, .views-exposed-form select, .views-exposed-form .form-type-textfield input, .form-item-date-filter-value-month, .form-item-date-filter-value-year, .form-item-field-fecha-de-publocaci-n-value-value-month, .form-item-field-fecha-de-publocaci-n-value-value-year {
+    padding-right: 0;
+    width: 100%;
+    clear: both;
+	float: none !important;
+}
+.form-item-field-fecha-de-publocaci-n-value-value-month, .form-item-date-filter-value-month {
+	margin-bottom: 10px !important;
+	}
+#edit-field-fecha-de-publocaci-n-value-value, #edit-date-filter-value, .form-item.form-type-date-select.form-item-date-filter-value, .form-item.form-type-date-select.form-item-field-fecha-de-publocaci-n-value-value {
+	width:100%;
+	}
+.view-directorio-de-actores, .view-normatividad, .view-estad-sticas/*, .page-taxonomy .content .contenido h2*/ {
+	margin-left: -20px;
+	}
+/*.view-noticias-y-archivos {
+	margin-left: -20px;
+	}*/
+#block-views-noticias-y-archivos-block-2, .page-alcaldias-normas-alcaldias .view-normatividad {
+    margin-left: 0;
+}
+.page-directorio-de-actores h2, .page-normatividad-runt h2, .page-estadisticas h2, .page-search h2, .page-noticias-y-sala-de-prensa h2 {
+    margin-left: 0px;
+}
+.form-item-date-filter-value-year {
+	margin-top:10px;
+	}
+.page-estadisticas .view-id-estad_sticas .view-content {
+    padding: 10px;
+}
+.page-estadisticas .view-id-estad_sticas .view-content svg {
+    width:100%;
+}
+.search-form, .page-search #block-system-main .content h2 {
+    padding-left: 0px;
+	margin-left:-20px;
+}
+.search-results {
+    margin-right: 0 !important;
+    padding-left: 0;
+    margin-left: -20px;
+}
+/*.view-display-id-page .view-display-id-attachment_1 {
+	padding-left: 15px;
+	}*/
+/*#block-quicktabs-glosario, #block-system-main .content > .view-taxonomy-term, .page-noticias-y-sala-de-prensa .contenido, .page-taxonomy-term-41 .contenido .region-content {
+    margin-left: -15px;
+    margin-right: -15px;
+}*/
+#block-quicktabs-glosario ul.quicktabs-tabs.quicktabs-style-basic {
+    height: 34px;
+}
+/*#block-system-main-menu .menu li.last.expanded.active-trail, #block-menu-menu-concesi-n .menu li.first.last.expanded.active-trail, #block-menu-menu-ciudadano .menu li.last.expanded.active-trail, #block-menu-menu-organismos-de-tr-nsito .menu li.last.expanded.active-trail #block-system-main-menu .menu .expanded .active-trail {
+	border-left:1px solid #ccc !important;
+	}*/
+.page-node-2027 .contenido.col-md-6, .page-node-2030 .contenido.col-md-6, .page-taxonomy-term-64 .contenido.col-md-6, .page-direcciones-territoriales-normas-direcciones-territoriales .contenido.col-md-6, .page-organismos-transito-comunicados-ot .contenido.col-md-6,.page-taxonomy-term-50 .contenido.col-md-6, .page-taxonomy-term-55 .contenido.col-md-6, .page-organismos-transito-normas-ot .contenido.col-md-6 {
+    width: 100% !important;
+}
+.page-direcciones-territoriales-preguntas-frecuentes #block-block-25 .content, .page-direcciones-territoriales-preguntas-frecuentes #block-system-main .content, .page-ministerio-transporte-normas-ministerio-transporte #block-block-24 .content, 
+.page-ministerio-transporte-preguntas-frecuentes #block-block-24 .content, .page-ministerio-transporte-preguntas-frecuentes #block-system-main .content, .page-organismos-transito-comunicados-ot #block-block-20 .content, .page-organismos-transito-comunicados-ot #block-block-34 .content, .page-organismos-transito-comunicados-ot #block-system-main .content, .page-organismos-transito-normas-ot .view-normatividad {
+	padding-left: 0;
+	}
+.page-organismos-transito-normas-ot .view-normatividad {
+	margin-left: 0;
+	}
+.page-otros-actores-normas-oa .view-normatividad {
+	margin-left: 0;
+	}
+.page-noticias-y-sala-de-prensa .view-noticias-y-archivos {
+	margin-left: -20px;
+	}
+.item-list .pager {
+    text-align: center;
+}
+#block-block-18 img, #block-block-19 img, img.bannerderecho {
+    width: 100% !important;
+    height: auto !important;
+}
+.sidebar_right.col-md-3 {
+    padding-left: 0;
+	margin-top: 10px;
+}
+#block-views-noticias-y-archivos-block-3, #block-views-noticias-y-archivos-block-4, #block-views-noticias-y-archivos-block-5 {
+	width: 100%;
+	}
+#block-views-noticias-y-archivos-block-3 .view-noticias-y-archivos {
+	margin-left: 0;
+	}
+/*.page-taxonomy-term-3 */#block-views-taxonomias-y-menus-block .views-view-grid {
+    margin-left: 0;
+    margin-right: 0;
+	display: table;
+    table-layout: fixed;
+}
+
+#block-views-taxonomias-y-menus-block-1 .views-view-grid {
+    margin-left: 0;
+    margin-right: 0;
+	display: table;
+    table-layout: fixed;
+}
+
+.page-taxonomy-term-3 .content .contenido {
+	padding-left: 0;
+	}
+/*.Hbloque_d1 {
+    text-align: left;
+}
+.header .auxiliar .menu_header {
+    text-align: left;
+}*/
+.view-preguntas-frecuentes .view-grouping-content {
+    border-bottom: 1px solid #ddd;
+}
+.contact-form {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: -15px;
+}
+.contact-form > div {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#block-block-11 .content {
+	padding: 0;
+	}
+.tarjegris {
+    width: 100%;
+	/*float: none;
+    margin-left: -15px;
+    margin-right: -15px;*/
+}
+#site-map .content > .site-map-menu {
+    margin-left: -20px !important; 
+}
+#site-map {
+    margin-left: -20px;
+}
+.page-sitemap h2.title, .page-sitemap h2 {
+    margin-left: 0;
+}
+#block-block-19, #block-block-28, #block-block-36 {
+	display: inline-block;
+	width: 49%;
+	}
+#block-block-26, #block-block-35 {
+	display: inline-block;
+	width: 50%;
+	}
+.btn-estadisticas {
+	width:167px;
+	padding-left: 8px;
+    padding-right: 8px;
+	background-repeat: no-repeat;
+    background-size: 167px 326px;
+    background-position: center;
+	}
+.btn-estadisticas:hover {
+	padding-left: 8px;
+    padding-right: 8px;
+	background-repeat: no-repeat;
+    background-size: 167px 326px;
+    background-position: center;
+	}
+.btn-directorio {
+	width:167px;
+	padding-left: 8px;
+    padding-right: 8px;
+    background-repeat: no-repeat;
+    background-size: 167px 326px;
+    background-position: center;
+	margin-left: 0;
+}
+.btn-directorio:hover {
+	padding-left: 8px;
+    padding-right: 8px;
+    background-repeat: no-repeat;
+    background-size: 167px 326px;
+    background-position: center;
+}
+#block-block-12, #block-views-estad-sticas-block-1 {
+    width: auto;
+	}
+.sidebar_home .bloque-info {
+	margin: 0 -20px;
+	}
+#block-twitter-block-1 .content {
+	padding: 0;
+	}
+.field-name-field-imagen-de-apoyo .field-items img {
+	width: 100%;
+	height: auto;
+	}
+.header .auxiliar .menu_header {
+    width: auto;
+    text-align: left;
+}
+.jumbotron {margin-top:15px; padding-bottom:100px;}
+.page-calendario-de-eventos .contenido .content {padding:5px;}
+.view-calendario-de-eventos .date-nav .pager {position:relative; top:-11px;}
+	
+}
+
+
+@media only screen 
+  and (min-device-width: 500px) 
+  and (max-device-width: 736px) 
+  and (orientation: landscape) { 
+  .page-calendario-de-eventos-dia .col-md-8 .view-id-calendario_de_eventos {
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: 0;
+}
+
+}
+
+
+
+@media only screen 
+  and (min-device-width: 550px) 
+  and (max-device-width: 600px) { 
+  #block-views-taxonomias-y-menus-block table tr.row-last td {
+    height: 160px;
+    max-width: 33%;
+    display: inline-block;
+    width: 530px;
+}
+#block-views-taxonomias-y-menus-block table tr.row-first td {
+    max-width: 33%;
+    height: 160px;
+    display: inline-block;
+    width: 530px;
+}
+
+#block-views-taxonomias-y-menus-block-1 table tr.row-last td {
+    height: 160px;
+    max-width: 33%;
+    display: inline-block;
+    width: 530px;
+}
+#block-views-taxonomias-y-menus-block-1 table tr.row-first td {
+    max-width: 33%;
+    height: 160px;
+    display: inline-block;
+    width: 530px;
+}
+
+.tarjegris {
+    width: 100%;
+}
+#block-quicktabs-glosario ul.quicktabs-tabs.quicktabs-style-basic li {
+    padding: 15px 15px;
+}
+  
+  }
+
+@media only screen 
+  and (min-device-width: 481px) 
+  and (max-device-width: 667px) 
+  and (orientation: landscape) { 
+    #block-block-12, #block-views-estad-sticas-block-1 {
+    width: auto;
+	}
+	#block-block-12 {
+    margin-left: 0;
+}
+  	td.today {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: 3px;
+}
+table.views-view-grid.cols-6 {
+    width: 100%;
+}
+
+}
+
+@media screen and (max-width: 480px) {
+.header {
+    margin-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.logos-inferior img, .logo2 img, .twitter img{
+		width:100%;
+		}
+.logos {
+    height: 70px;
+}
+.header .logo2 {
+    top: -30px;
+	border-left: none;
+	width: 58%;
+}
+.header .logo1 {
+	width: 40%;
+	padding-right: 0;
+}
+.Hbloque_d1 {
+    padding-top: 0;
+    padding-left: 0;
+	width: 100%;
+}
+.Hbloque_d2 {
+    padding-right: 0;
+	width: 100%;
+}
+#search-block-form .form-text {
+    width: 90%;
+}
+.concesion {
+    display: inline-block;
+    width: 53%;
+    text-align: left;
+}
+.social {
+    width: 45%;
+    display: inline-block;
+	position:relative;
+	top:-15px;
+}
+.header .auxiliar .menu_header {
+    width: auto;
+    text-align: center;
+}
+	.menu-toggle .toggle-help {
+    width: 150px;
+}
+.sidebar_left {
+    padding-left: 0;
+    padding-right: 0;
+}
+  #block-system-main-menu, #block-menu-menu-concesi-n, #block-menu-menu-ciudadano, #block-menu-menu-organismos-de-tr-nsito, #block-menu-menu-ministerio-de-transporte, #block-menu-menu-alcadias, #block-menu-menu-organismos-de-tr-nsito-a, #block-menu-menu-direcciones-territoriales {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+#block-system-main-menu .menu li {
+    /*border-left: 1px solid rgba(171,171,171,1.00) !important;*/
+}
+	.nav-tabs>li {
+		width: 100%;
+		}
+	.nav>li>a {
+		border-radius: 0px;
+		}
+	.menu li {
+		/*display: block;
+		padding-left: 0px;
+		padding-right: 0px;
+		border: 1px solid rgba(171,171,171,1.00) !important;*/
+		}
+	.actualizados2 {
+padding: 0;
+}
+#block-views-noticias-y-archivos-block-2 {
+    margin-left: 0;
+}
+#block-views-calendario-de-eventos-block-1 {
+    width: 100%;
+    padding-right: 0;
+}
+#block-block-12, #block-views-estad-sticas-block-1 {
+    width: 168px;
+}
+#block-block-12 {
+    margin-left: 0;
+	/*margin-left: 25px;*/
+}
+.bloqueH_actores {
+    padding: 20px 10px;
+}
+td.today {
+    background-size: 45px 45px;
+    background-repeat: no-repeat;
+    /*background-position-y: 5px;
+    background-position-x: 11px;*/
+	background-position: center;
+}
+.contenido.col-md-9, .contenido.col-md-12, .contenido.col-md-8, .sidebar_right.col-md-4, .contenido .content, .sidebar_right.col-md-3  {
+    /*padding-right: 0;
+    padding-left: 0;*/
+}
+.barra_roja {
+    right: 0;
+	text-align: center;
+}
+.region-contentder42 {
+    padding-right: 0;
+}
+.response-table td ul {
+	list-style: none;
+    padding: 0;
+    text-align: center;
+	}
+.response-table td {
+    max-width: 145px;
+}
+.contenido.col-md-9 .img-responsive, .img-responsive {
+    width: 100% !important;
+    height: auto !important;
+	margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.botones-actores {
+    text-align: center;
+}
+.contenedor_videos {
+	position:relative;
+	padding-bottom:56.25%;
+	padding-top:30px;
+	height:0;
+	overflow:hidden;
+}
+.contenedor_videos iframe {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+#block-views-taxonomias-y-menus-block {
+    width: 100%;
+    left: 0;
+    margin-bottom: 0;
+}
+#block-views-taxonomias-y-menus-block table td div {
+    width: 100%;
+    padding-left: 90px;
+    text-align: left;
+    font-size: 12px;
+	height: 60px;
+    display: table;
+}
+#block-views-taxonomias-y-menus-block table td div span {
+	display: table-cell;
+    vertical-align: middle;
+    padding-left: 90px;
+	}
+#block-views-taxonomias-y-menus-block td {
+    display: block !important;
+    width: 95%;
+    clear: both;
+    max-width: 100% !important;
+    height: 83px !important;
+    background-position: 10% 50%;
+	padding:10px !important;
+	}
+#block-views-taxonomias-y-menus-block table tr.row-last td.col-6.col-last {
+    display: none !important;
+}
+
+
+#block-views-taxonomias-y-menus-block-1 {
+    width: 100%;
+    left: 0;
+    margin-bottom: 30px;
+}
+#block-views-taxonomias-y-menus-block-1 table td div {
+    width: 100%;
+    padding-left: 90px;
+    text-align: left;
+    font-size: 12px;
+	height: 60px;
+    display: table;
+}
+#block-views-taxonomias-y-menus-block-1 table td div span {
+	display: table-cell;
+    vertical-align: middle;
+    padding-left: 90px;
+	}
+#block-views-taxonomias-y-menus-block-1 td {
+    display: block !important;
+    width: 100%;
+    clear: both;
+    max-width: 100% !important;
+    height: 83px !important;
+    background-position: 10% 50%;
+	padding:10px !important;
+	}
+#block-views-taxonomias-y-menus-block-1 table tr.row-last td.col-6.col-last {
+    display: none !important;
+}
+
+
+.page-taxonomy-term-3 .region-content12 {
+	margin-right: -15px !important;
+	margin-left: 0 !important;
+	}
+/*.page-taxonomy-term- .region-content12 {
+	margin-right: -15px;
+	margin-left: -15px;
+	}*/
+.sidebar_right.col-md-4 {
+    padding-left: 0;
+}	
+/*.region.region-contentizq82 {
+    margin-left: -15px;
+    margin-right: -15px;
+}*/
+
+#quicktabs-registro_nacional_de_empresas_de .item-list {
+    left: 0;
+    width: 100%;
+}
+#quicktabs-registro_nacional_de_empresas_de .item-list ul li {
+    padding: 5px;
+    margin-right: 0;
+    width: 100%;
+    display: block;
+    text-align: center;
+    border: 1px solid #fff;
+    margin: 0;
+}
+ul.quicktabs-tabs.quicktabs-style-arrows {
+    padding: 0 !important;
+    margin: 0;
+}
+#quicktabs-registro_nacional_de_empresas_de .item-list ul li.last {
+    border-right: 1px solid #fff;
+}
+#quicktabs-registro_nacional_de_empresas_de .view-content {
+    width: 100%;
+    display: block;
+}
+#quicktabs-registro_nacional_de_empresas_de .attachment-after {
+    width: 100%;
+    display: block;
+    padding-left: 0;
+}
+#quicktabs-tabpage-registro_nacional_de_empresas_de-0 table.response-table.table {
+	padding: 0;
+}
+.views-row.views-row-1.views-row-odd.views-row-first.views-row-last.bloque-contenido.bloque-scroll {
+    height: auto;
+    overflow-y: visible;
+}
+table.response-table.table.RNET_table1, table.response-table.table.RNET_table2 {
+    width: 300px !important;
+}
+table.response-table.table.RNET_table2 td {
+	padding: 0;
+	}
+table.response-table.table.RNET_table2 img {
+	margin-left: 5px !important;
+    margin-right: 5px !important;
+	}
+.page-contact #edit-submit {
+    width: 100%;
+    margin-left: 0;
+}
+.contact-form .form-type-textarea label {
+    height: auto;
+    top: 0;
+}
+.contact-form .form-textarea-wrapper, .contact-form input {
+    width: 100%;
+}
+.contact-form {
+    padding-left: 0;
+	padding-right: 0;
+}
+.contact-form label {
+    width: 300px;
+    display: block;
+}
+.contact-form .form-item-mail input {
+    top: 0;
+}
+#block-quicktabs-glosario ul.quicktabs-tabs.quicktabs-style-basic li {
+    padding: 15px 5px;
+}
+ul.quicktabs-tabs.quicktabs-style-basic li {
+    margin: 0;
+}
+ul.quicktabs-tabs.quicktabs-style-basic {
+    padding: 0;
+}
+.ui-accordion .ui-accordion-content {
+    padding: 1em 1em;
+}
+.page-node-614 .field-name-body, .page-node-615 .field-name-body {
+    margin-left: 0;
+}
+.page-node-614 h2, .page-node-615 h2 {
+    margin-left: 0px !important;
+}
+h4.titnaranja span {
+    padding: 0;
+}
+
+/* Force table to not be like tables anymore */
+	.view-directorio-de-actores table, .view-directorio-de-actores table thead, .view-directorio-de-actores table tbody, .view-directorio-de-actores table th, .view-directorio-de-actores table td, .view-directorio-de-actores table tr, .view-taxonomy-term table, .view-taxonomy-term table thead, .view-taxonomy-term table tbody, .view-taxonomy-term table th, .view-taxonomy-term table td, .view-taxonomy-term table tr, #node-2030 table, #node-2030 table thead, #node-2030 table tbody, #node-2030 table th, #node-2030 table td, #node-2030 table tr { 
+		display: block; 
+	}
+	
+/* Hide table headers (but not display: none;, for accessibility) */
+	.view-directorio-de-actores table thead tr, .view-taxonomy-term table tr:first-child, #node-2030 table tbody tr:first-child { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	.view-directorio-de-actores table tr, .view-taxonomy-term table tr, #node-2030 table tr { border: 1px solid #ccc; }
+	.view-directorio-de-actores table td, .view-taxonomy-term table td, #node-2030 table td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+		max-width: none;
+	}
+	.view-taxonomy-term table td, #node-2030 table td {
+		padding-left: 35% !important; 
+		}
+	.view-directorio-de-actores table tr:nth-of-type(odd), .view-taxonomy-term table tr:nth-of-type(odd), #node-2030 table tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+	.view-directorio-de-actores table td:before, .view-taxonomy-term table td:before, #node-2030 table td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		font-weight:600;
+	}
+	/* Label the data */
+	.view-directorio-de-actores table td:nth-of-type(1):before { content: "Nombre"; }
+	.view-directorio-de-actores table td:nth-of-type(2):before { content: "Dirección"; }
+	.view-directorio-de-actores table td:nth-of-type(3):before { content: "Teléfono"; }
+	.view-directorio-de-actores table td:nth-of-type(4):before { content: "Tipo"; }
+	.view-directorio-de-actores table td:nth-of-type(5):before { content: "Ciudad o Municipio"; }
+	
+	.view-taxonomy-term table td:nth-of-type(1):before { content: "Nombre"; }
+	.view-taxonomy-term table td:nth-of-type(2):before { content: "Cargo"; }
+	.view-taxonomy-term table td:nth-of-type(3):before { content: "Teléfono"; }
+	.view-taxonomy-term table td:nth-of-type(4):before { content: "Ext."; }
+	.view-taxonomy-term table td:nth-of-type(5):before { content: "Correo"; }
+	
+	#node-2030 table td:nth-of-type(1):before { content: "Nombre"; }
+	#node-2030 table td:nth-of-type(2):before { content: "Dirección"; }
+	#node-2030 table td:nth-of-type(3):before { content: "Teléfono"; }
+	#node-2030 table td:nth-of-type(4):before { content: "Contácto"; }
+	#node-2030 table td:nth-of-type(5):before { content: "e-mail"; }
+	#node-2030 table td:nth-of-type(6):before { content: "Celular"; }
+
+
+.search-form #edit-keys {
+	width: 100%;
+	margin-bottom: 10px;
+	}
+#block-block-19, #block-block-28, #block-block-26, #block-block-35, #block-block-36 {
+	display: block;
+	width: 100%;
+	}
+	#main-menu {padding:20px 20px 0px 20px !important;}
+	.titulo-linea {
+  margin-bottom:10px;  
+}	
+#block-block-8 .btn-act {min-height:290px;}
+	
+	
+
+	}
+	
+@media screen and (max-width: 320px) {
+	#block-block-12, #block-views-estad-sticas-block-1 {
+    width: 168px;
+    display: block;
+    margin: 0 auto;
+}
+#block-quicktabs-glosario ul.quicktabs-tabs.quicktabs-style-basic li {
+    padding: 15px 2px;
+}
+table.response-table.table.RNET_table1, table.response-table.table.RNET_table2 {
+    width: 248px !important;
+}	
+
+#search-block-form .form-text {
+    width: 85%;
+}
+.botones-actores .btnNA {margin:0 !important; zoom:80%;}
+.social div, .concesion div {zoom:80%;}
+	#block-block-14 .bloqueH_actores {padding-bottom:50px;}
+#block-block-8 .btn-act {min-height:240px;}
+	}
+	
+.rtejustify {text-align:left;}

@@ -1,0 +1,497 @@
+<div class="contenido col-md-12 panelServicio">
+    <div class="content">
+        <div class="bloqueH_actores">
+            <h3 class="titulo-linea">CONSULTA REGISTRO NACIONAL AUTOMOTOR (RNA)</h3>
+        </div>
+    </div>
+    <div class="contenido col-md-12">
+        <div id="messages">
+            <div class="messages status ok" ng-show="verMsjOk">
+                <h4>Información</h4>
+                <span id="msgResultadoRegOk"></span>
+            </div>
+            <div class="messages status error" ng-show="verMsjError">
+                <h4>Error</h4>
+                <span id="msgResultadoRegError"></span>
+            </div>
+        </div>
+        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Filtros de búsqueda</div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="block-system-main1" class="block block-system">
+                        <div class="content">
+                            <div class="row rowSpace">
+                                <div class="form-group" ng-class="{
+                                        'has-error': errores.placa}">
+                                    <div class="col-xs-3 col-sm-3">
+                                        <label for="placa" class="control-label">
+                                            Placa:
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9">
+                                        <input id="placa" 
+                                               ng-class="{
+                                                       'has-error': errores.placa}"
+                                               style="width: 50%"
+                                               class="form-control input-sm required" 
+                                               type="text" 
+                                               ng-model="datosFormulario.placa"
+                                               capitalize
+                                               maxlength="6"/>
+                                        <span ng-show="errores.placa" class="control-label">{{errores.placa}}</span>
+                                    </div>
+                                </div>  
+                            </div>	
+                        </div>
+                    </div>
+                </div>
+                <div id="block-block-8" class="block block-block">
+                    <div class="content">
+                        <div class="bloqueH_actores">
+                            <div class="botones-actores">                        
+                                <p class="btn-act">
+                                    <a class="btnNA btn-alcaldias" ng-click="consultar(1)">Migración</a>
+                                    <br />
+                                    <a class="btnNA btn-ministerio" ng-click="consultar(2)">Intermedia</a>
+                                    <br />
+                                    <a class="btnNA btn-otros" ng-click="consultar(3)">Rechazos</a>
+                                    <br />
+                                    <a class="btnNA btn-otros" ng-click="consultar(4)">Boletín</a>
+                                    <br />
+                                    <a class="btnNA btn-ministerio" ng-click="consultar(5)">Final Migración</a>
+                                    <br />
+                                    <a class="btnNA btn-transito" ng-click="consultar(6)">Producción</a>
+                                </p>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="tipo === 1">
+                    <div id="block-system-main" class="block block-system">
+                        <div class="content">
+                            <div id="block-system-main1" class="block block-system">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="panel panel-default table-responsive">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="11">
+                                                            <div class="col-md-9 labelRunt">
+                                                                &nbsp;&nbsp;<font color="#CC6600">Migración</font>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>                                                         
+                                                        <th><div align="CENTER"><font color="#CC6600">ID AUTORIDAD DE TRÁNSITO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">AUTORIDAD DE TRÁNSITO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">PLACA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ESTADO VEHÍCULO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ESTADO CARGUE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ID CARGUE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MIGRADO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">RADICADO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">FECHA CARGA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">FOLIO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">BOLETÍN</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MARCA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">LÍNEA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ID CLASE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CLASE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ID CARROCERIA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CARROCERIA</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">ID MODALIDAD</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MODALIDAD</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CILINDRAJE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MODELO</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">MOTOR</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">SERIE</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">CHASIS</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">TONELADAS</font></div></th>
+                                                        <th><div align="CENTER"><font color="#CC6600">PASAJEROS</font></div></th>                                                  
+                                                    </tr>
+                                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize:'tblpaginationresult1'" current-page="currentPage1" pagination-id="tblpaginationresult1">
+                                                        <td>{{resultado.idSecretari}}</td>
+                                                        <td>{{resultado.descriSecre}}</td>
+                                                        <td>{{resultado.placa}}</td>
+                                                        <td>{{resultado.estadoVehic}}</td>              
+                                                        <td>{{resultado.estadoCargue}}</td>  
+                                                        <td>{{resultado.codCarga}}</td>                                
+                                                        <td>
+                                                            <div ng-show="resultado.migrado === 'M'">Migrado</div>
+                                                            <div ng-show="resultado.migrado !== 'M'">No Migrado</div>
+                                                        </td>
+                                                        <td>{{resultado.radicado}}</td>
+                                                        <td>{{resultado.fechCarga}}</td>
+                                                        <td>{{resultado.folio}}</td>              
+                                                        <td>{{resultado.boletin}}</td>  
+                                                        <td>{{resultado.marca}}</td>                                
+                                                        <td>{{resultado.linea}}</td>
+                                                        <td>{{resultado.idClase}}</td>
+                                                        <td>{{resultado.clase}}</td>
+                                                        <td>{{resultado.idCarroceri}}</td>              
+                                                        <td>{{resultado.carroceria}}</td>  
+                                                        <td>{{resultado.idModalidad}}</td>                                
+                                                        <td>{{resultado.modalidad}}</td>
+                                                        <td>{{resultado.cilindraje}}</td>
+                                                        <td>{{resultado.modelo}}</td>
+                                                        <td>{{resultado.motor}}</td>              
+                                                        <td>{{resultado.serie}}</td>  
+                                                        <td>{{resultado.chasis}}</td>
+                                                        <td>{{resultado.toneladas}}</td>  
+                                                        <td>{{resultado.pasajeros}}</td>                                                      
+                                                    </tr>
+                                            </table>
+                                            <div>
+                                                <dir-pagination-controls boundary-links="true" pagination-id="tblpaginationresult1" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div ng-show="tipo === 2">
+                    <div class="contenido col-md-12">
+                        <div class="panel-body">
+                            <div class="region region-content">
+                                <div id="block-system-main1" class="block block-system">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="panel panel-default table-responsive">
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th colspan="11">
+                                                                <div class="col-md-9 labelRunt">
+                                                                    &nbsp;&nbsp;<font color="#CC6600">Intermedia</font>
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><div align="CENTER"><font color="#CC6600">ID VEHÍCULO</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">PLACA</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">AUTORIDAD QUE REGISTRA</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">AUTORIDAD DE TRÁNSITO</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">FECHA MIGRACIÓN</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">CODIGO DE CARGA</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">ESTADO VEHÍCULO</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">MIGRADO</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">DESC MIGRADO</font></div></th>
+                                                        </tr>                                                
+                                                        <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize:'tblpaginationresult2'" current-page="currentPage2" pagination-id="tblpaginationresult2">
+                                                            <td>{{resultado.idVehic}}</td>
+                                                            <td>{{resultado.placa}}</td>
+                                                            <td>{{resultado.autoRegistra}}</td>
+                                                            <td>{{resultado.secretaria}}</td>
+                                                            <td>{{resultado.fechaMigra}}</td>
+                                                            <td>{{resultado.codCarga}}</td>
+                                                            <td>{{resultado.estadoVehic}}</td>
+                                                            <td>{{resultado.migrado}}</td>
+                                                            <td>
+                                                                <div ng-show="resultado.desError === 'NA'"> </div>  
+                                                                <div ng-show="resultado.desError !== 'NA'">{{resultado.desError}}</div>
+                                                            </td>
+                                                        </tr>
+                                                </table>
+                                                <div>
+                                                    <dir-pagination-controls boundary-links="true" pagination-id="tblpaginationresult2" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="tipo === 3">
+                    <div class="contenido col-md-12">
+                        <div class="panel-body">
+                            <div class="region region-content">
+                                <div id="block-system-main1" class="block block-system">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="panel panel-default table-responsive">
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th colspan="11">
+                                                                <div class="col-md-9 labelRunt">
+                                                                    &nbsp;&nbsp;<font color="#CC6600">Rechazos</font>
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><div align="CENTER"><font color="#CC6600">PLACA</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">AUTORIDAD DE TRÁNSITO</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">NRO. CARGA</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">COD. CRITERIO</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">CRITERIO</font></div></th>
+                                                        </tr>                                                
+                                                        <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize:'tblpaginationresult3'" current-page="currentPage3" pagination-id="tblpaginationresult3">
+                                                            <td>{{resultado.placa}}</td>
+                                                            <td>{{resultado.Secretaria}}</td>
+                                                            <td>{{resultado.carga}}</td>
+                                                            <td>{{resultado.codCriterio}}</td>
+                                                            <td>{{resultado.criterio}}</td>
+                                                        </tr>
+                                                </table>  
+                                                <div>
+                                                    <dir-pagination-controls boundary-links="true" pagination-id="tblpaginationresult3" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="tipo === 4">
+                    <div class="contenido col-md-12">
+                        <div class="panel-body">
+                            <div class="region region-content">
+                                <div id="block-system-main1" class="block block-system">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="panel panel-default table-responsive">
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th colspan="11">
+                                                                <div class="col-md-9 labelRunt">
+                                                                    &nbsp;&nbsp;<font color="#CC6600">Boletín</font>
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><div align="CENTER"><font color="#CC6600">PLACA</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">AUTORIDAD DE TRÁNSITO</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">FECHA CARGA</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">FOLIO</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">BOLETÍN</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">COD. CRITERIO</font></div></th>
+                                                            <th><div align="CENTER"><font color="#CC6600">CRITERIO</font></div></th>
+                                                        </tr>                                                
+                                                        <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize:'tblpaginationresult4'" current-page="currentPage4" pagination-id="tblpaginationresult4">
+                                                            <td>{{resultado.placa}}</td>
+                                                            <td>{{resultado.secretaria}}</td>
+                                                            <td>{{resultado.fechaCarga}}</td>
+                                                            <td>{{resultado.folio}}</td>
+                                                            <td>{{resultado.boletin}}</td>
+                                                            <td>{{resultado.codCriterio}}</td>
+                                                            <td>{{resultado.descripcion}}</td>
+                                                        </tr>
+                                                </table> 
+                                                <div>
+                                                    <dir-pagination-controls boundary-links="true" pagination-id="tblpaginationresult4" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="tipo === 5">
+                    <div class="contenido col-md-12">
+                        <div class="panel-body">
+                            <div class="region region-content">
+                                <div class="col-2">
+                                    <label class="control-label">
+                                        FINAL MIGRACIÓN
+                                    </label>
+                                </div>
+                                <table ng-table="resultadosC" style="border: 1px">
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">ID ORGANISMO DE TRANSITO : </font></strong></td>
+                                        <td>{{resultado.idOt}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">ORGANISMO DE TRANSITO : </font></strong></td>
+                                        <td>{{resultado.nombreOt}}</td>
+                                    </tr>   
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">ID VEHÍCULO : </font></strong></td>
+                                        <td>{{resultado.idVehiculo}}</td>
+                                    </tr> 
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">PLACA : </font></strong></td>
+                                        <td>{{resultado.placa}}</td>
+                                    </tr> 
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">MIGRADO : </font></strong></td>
+                                        <td>
+                                            <div ng-show="resultado.migrado === 'M'">MIGRADO</div>    
+                                            <div ng-show="resultado.migrado !== 'M'">{{resultado.migrado|uppercase}}</div>
+                                        </td>
+                                    </tr> 
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">FECHA MIGRACION : </font></strong></td>
+                                        <td>{{resultado.fecMigra}}</td>
+                                    </tr> 
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">CLASE : </font></strong></td>
+                                        <td>{{resultado.clase}}</td>
+                                    </tr>  
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">COLOR : </font></strong></td>
+                                        <td>{{resultado.color}}</td>
+                                    </tr> 
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">LÍNEA : </font></strong></td>
+                                        <td>{{resultado.linea}}</td>
+                                    </tr>  
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">MARCA : </font></strong></td>
+                                        <td>{{resultado.marca}}</td>
+                                    </tr> 
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">MODALIDAD DE SERVICIO : </font></strong></td>
+                                        <td>{{resultado.modaservi}}</td>
+                                    </tr> 
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">CARROCERIA : </font></strong></td>
+                                        <td>{{resultado.carroceria}}</td>
+                                    </tr>  
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">MODELO : </font></strong></td>
+                                        <td>{{resultado.modelo}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">NRO. CHASIS : </font></strong></td>
+                                        <td>{{resultado.nroChasis}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">NRO. MOTOR : </font></strong></td>
+                                        <td>{{resultado.nroMotor}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">NRO. SERIE : </font></strong></td>
+                                        <td>{{resultado.nroSerie}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">CILINDRAJE : </font></strong></td>
+                                        <td>{{resultado.cilindraje}}</td>
+                                    </tr> 
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">ESTADO VEHÍCULO : </font></strong></td>
+                                        <td>{{resultado.estadoVehic}}</td>
+                                    </tr> 
+                                </table> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="tipo === 6">
+                    <div class="contenido col-md-12">
+                        <div class="panel-body">
+                            <div class="region region-content">
+                                <div class="col-2">
+                                    <label class="control-label">
+                                        PRODUCCIÓN:
+                                    </label>
+                                </div>
+                                <table ng-table="resultadosC" style="border: 1px">
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">ID ORGANISMO DE TRANSITO :</font></strong></td>
+                                        <td>{{resultado.idOt}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">    
+                                        <td><strong><font color="#CC6600">ORGANISMO DE TRANSITO : </font></strong></td>
+                                        <td>{{resultado.nombreOt}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">ID VEHÍCULO : </font></strong></td>
+                                        <td>{{resultado.idVehiculo}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">PLACA : </font></strong></td>
+                                        <td>{{resultado.placa}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">ESTADO DEL VEHÍCULO : </font></strong></td>
+                                        <td>{{resultado.estadoVehic}}</td> 
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">CLASE : </font></strong></td>
+                                        <td>{{resultado.clase}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">SERVICIO : </font></strong></td>
+                                        <td>{{resultado.servicio|uppercase}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">FECHA DE MATRICULA : </font></strong></td>
+                                        <td>{{resultado.fechaMatricula}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">MIGRADO : </font></strong></td>
+                                        <td>{{resultado.migrado}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">FECHA DE MIGRACIÓN : </font></strong></td>
+                                        <td>{{resultado.fecMigra}}</td> 
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">MODELO : </font></strong></td>
+                                        <td>{{resultado.modelo}}</td> 
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">MARCA : </font></strong></td>
+                                        <td>{{resultado.marca}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">CARROCERIA : </font></strong></td>
+                                        <td>{{resultado.carroceria}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">LÍNEA : </font></strong></td>
+                                        <td>{{resultado.linea}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">CARGA : </font></strong></td>
+                                        <td>{{resultado.carga}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">PESO : </font></strong></td>
+                                        <td>{{resultado.peso}}</td>  
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">NRO. DE CHASIS : </font></strong></td>
+                                        <td>{{resultado.nroChasis}}</td> 
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">NRO. DE MOTOR : </font></strong></td>
+                                        <td>{{resultado.nroMotor}}</td>
+                                    </tr>    
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">NRO. DE SERIE : </font></strong></td>
+                                        <td>{{resultado.nroSerie}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">MODALIDAD DE SERVICIO : </font></strong></td>
+                                        <td>{{resultado.modaServi}}</td>
+                                    </tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">COMBUSTIBLE : </font></strong></td>
+                                        <td>{{resultado.combustible}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

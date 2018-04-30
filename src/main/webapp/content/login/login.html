@@ -1,0 +1,43 @@
+<div class="contenido col-md-12">
+
+    <div class="region region-content">
+        <div id="block-system-main" class="block block-system ">
+            <div class="content">
+                
+
+                <form role="form">
+                    <h2>LOGIN SAGIR</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-3 form-group" style="width: 450px"
+                             ng-class="{'has-error' : (formreg.usuario.$dirty) && !formreg.usuario.$valid || errores.login}">
+                            <label for="usuario" style="width: 350px" class="control-label">Usuario</label>
+                            <input type="text" style="width: 350px" class="form-control"
+                                   id="usuario" name="usuario"
+                                   title="Digite su nombre de usuario para ingresar a la aplicaci&oacute;n"
+                                   ng-model="datosFormulario.login" /> <span class="control-label"
+                                   ng-show="errores.login">{{errores.login}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 form-group" style="width: 450px"
+                             ng-class="{'has-error' : (formreg.password.$dirty) && !formreg.password.$valid || errores.password}">
+                            <label for="password" style="width: 350px" class="control-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password"
+                                   style="width: 350px" name="password"
+                                   title="Digite la constraseña"
+                                   ng-model="datosFormulario.password" /> <span
+                                   class="control-label" ng-show="errores.password">{{errores.password}}</span>
+                        </div>
+                    </div>
+                    <!--<div style="text-align: right;">-->
+                    <button type="button" class="button buttonLogin" ng-click="login()">Ingresar</button>
+                    <!--</div>-->
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,104 @@
+<div class="contenido col-md-12 panelServicio">
+    <div id="block-block-8" class="block block-block">
+        <div class="content">
+            <div class="bloqueH_actores">
+                <h3 class="titulo-linea">CONSULTA DECLARACION DE IMPORTACION</h3>
+
+            </div>
+        </div>         
+    </div>
+    <div class="contenido col-md-12">
+        <div id="messages">
+            <div class="messages status ok" ng-show="verMsjOk">
+                <h4>Información</h4>
+                <span id="msgResultadoRegOk"></span>
+            </div>
+            <div class="messages status error" ng-show="verMsjError">
+                <h4>Error</h4>
+                <span id="msgResultadoRegError"></span>
+            </div>
+        </div>
+        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Filtros de búsqueda</div>
+                    </div>
+                </div>
+                
+                <div class="panel-body">
+                    <div id="block-system-main1" class="block block-system">
+                        <div class="content">
+                            <div class="row rowSpace" ng-class="errores.declaracion ? 'has-error' : ''">
+                                <div class="col-xs-3 col-sm-3">
+                                    <label for="declaracion" class="control-label">
+                                        Numero Declaracion:
+                                    </label>
+                                </div>
+                                <div class="col-xs-9 col-sm-9">
+                                    <input id="Declaracion:" 
+                                           style="width: 50%"
+                                           class="form-control input-sm required" 
+                                           type="text" 
+                                           ng-model="datosFormulario.declaracion"
+                                           capitalize
+                                           maxlength="20"/>
+                                    <span class="control-label" ng-show="errores.declaracion">{{errores.declaracion}}</span>
+                                </div>
+                            </div>	
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="block-block-8" class="block block-block">
+                    <div class="content">
+                        <div class="bloqueH_actores">
+                            <div class="botones-actores">                        
+                                <p class="btn-act">
+                                    <a class="btnNA btn-otros" ng-click="buscar(1)">Consulta Declaracion</a>
+                                    <br />
+                                </p>
+                            </div>
+                            
+                            <br>
+                            
+                            <div class="contenido col-md-12">
+                                <div class="panel-body">
+                                    <div class="region region-content">
+                                        <div id="block-system-main" class="block block-system">
+                                            <div class="content">
+                                                <div ng-show="tipo === 1">  
+                                                    <div class="table-responsive" align="CENTER" ng-show="verResultado">
+<!--                                                        -->
+                                                        <table style="border: 1px" class="table-bordered" >
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; N. LEVANTE</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.numLevante}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; FECHA LEVANTE</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.fecLevante| date:'dd-MM-yyyy'}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; N. SUB PARTIDA</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.numSubpartida}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; N. IDENTIFICACION</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.numIdentificacionImpo}}</td>
+                                                            </tr>
+                                                        </table>  
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

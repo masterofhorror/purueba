@@ -1,0 +1,329 @@
+<script type="text/javascript">
+    function clicRegistrar() {
+    $("#btnRegistrarSolc").click();
+    }
+
+
+    var reader;
+    var progress = document.querySelector('.percent');
+    function abortRead() {
+    reader.abort();
+    }
+
+    function errorHandler(evt) {
+    switch (evt.target.error.code) {
+    case evt.target.error.NOT_FOUND_ERR:
+            alert('File Not Found!');
+    break;
+    case evt.target.error.NOT_READABLE_ERR:
+            alert('File is not readable');
+    break;
+    case evt.target.error.ABORT_ERR:
+            break; // noop
+    default:
+            alert('An error occurred reading this file.');
+    }
+    ;
+    }
+
+    function updateProgress(evt) {
+    // evt is an ProgressEvent.
+    if (evt.lengthComputable) {
+    var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+    // Increase the progress bar length.
+    if (percentLoaded < 100) {
+    progress.style.width = percentLoaded + '%';
+    progress.textContent = percentLoaded + '%';
+    }
+    }
+    }
+
+    function handleFileSelect(evt) {
+    $('#archivo').val();
+    $('#nombre').val();
+    var files = evt.target.files; // FileList object
+    var file = files[0];
+    if (file.size > '2000000') {
+    $('#files').scope().mensaje(file.size);
+    $('#files').val('');
+    $('#nombre').val('');
+    } else {
+    // Reset progress indicator on new file selection.
+    progress.style.width = '0%';
+    progress.textContent = '0%';
+    reader = new FileReader();
+    reader.onerror = errorHandler;
+    reader.onprogress = updateProgress;
+    reader.onabort = function (e) {
+    alert('File read cancelled');
+    };
+    reader.onloadstart = function (e) {
+    document.getElementById('progress_bar').className = 'loading';
+    };
+    reader.onload = function (e) {
+    // Ensure that the progress bar displays 100% at the end.
+    progress.style.width = '100%';
+    progress.textContent = '100%';
+    setTimeout(
+            "document.getElementById('progress_bar').className='';",
+            2000);
+    };
+    reader.onloadend = function (evt) {
+    if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+    $('#archivo').val(btoa(evt.target.result));
+    $('#nombre').val(escape(file.name));
+    //document.getElementById('archivo').value = btoa(evt.target.result); 
+    //document.getElementById('nombre').value = escape(file.name)
+    }
+    };
+    // Read in the image file as a binary string.
+    reader.readAsBinaryString(evt.target.files[0]);
+    }
+    }
+
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+    document.getElementById('files').addEventListener('change',
+            handleFileSelect, false);
+    } else {
+    ('#files').scope().validacionNavegador();
+    }
+
+    $("#files").fileinput({
+    'language': "es",
+            'showCaption': true,
+            'browseClass': 'btn btn-danger btn-sm',
+            'fileType': 'any',
+            'allowedFileExtensions': ['.zip'],
+            'showUpload': false
+    });</script>
+
+
+<div id="procesamientoCarguesProgramados" class="contenido col-md-12 panelServicio" >
+
+    <div id="block-block-8" class="block block-block">
+        <div class="content">
+            <div class="bloqueH_actores">
+                <h3 class="titulo-linea">PROGRAMAR CARGUE</h3>
+            </div>
+        </div>         
+    </div>
+
+    <div id="messages">
+        <div class="messages status ok" ng-show="mensajeSuccess">
+            <h4>Exito</h4>
+            <span id="msgSuccess"></span>
+        </div>
+        <div class="messages status warning" ng-show="mensajeInfo">
+            <h4>Información</h4>
+            <span id="msgInfo"></span>
+        </div>
+        <div class="messages status error" ng-show="mensajeError">
+            <h4>Error</h4>
+            <span id="msgError"></span>
+        </div>
+    </div>
+
+    <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;" ng-show="pantallaPrincipal">
+        <div class="panel panel-default">
+            <!--Panel resultado-->
+            <div class="panel-body panelPrincipal">
+                <div id="block-system-main1" class="block block-system">
+                    <div class="content">
+                        <div class="row">
+                            <div class="panel panel-default table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr style="background-color: #f5f5f5">
+                                            <th colspan="11">
+                                                <div class="col-md-9 labelRunt">
+                                                    <span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Procesar cargues programados
+                                                </div>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th  style="min-width: 120px; text-align: center;">Proceso</th>
+                                            <th style="min-width: 100px; text-align: center;">Orden</th>
+                                            <th style="min-width: 120px;; text-align: center;">Carga</th>
+                                            <th style="min-width: 200px; text-align: center;">Organismo</th>
+                                            <th style="min-width: 80px; text-align: center;">Tipo</th>
+                                            <th style="min-width: 120px; text-align: center;">Tipo archivo</th>
+                                            <th style="min-width: 200px; text-align: center;">Archivo</th>
+                                            <th style="min-width: 100px; text-align: center;">Estado</th>
+                                            <th style="min-width: 100px; text-align: center;">Fecha programación</th>
+                                            <th style="min-width: 250px; text-align: center;">Observaciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr dir-paginate="cargue in resultadoConsulta | itemsPerPage: pageSizeGeneral: 'listadoGeneral'" current-page="currentPageGeneral" pagination-id="listadoGeneral">
+                                            <td align="center">{{cargue.proceso}}</td>
+                                            <td align="center">{{cargue.orden}}</td>
+                                            <td align="center">{{cargue.carga}}</td>
+                                            <td align="center">{{cargue.organismo}}</td>
+                                            <td align="center">{{cargue.tipo}}</td>
+                                            <td align="center">{{cargue.tipoArchivo}}</td>
+                                            <td align="center">{{cargue.archivo}}</td>
+                                            <td align="center">{{cargue.estado}}</td>
+                                            <td align="center">{{cargue.fechaProgramacion}}</td>
+                                            <td align="center">{{cargue.observaciones}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div>
+                                    <div class="text-center">
+                                        <dir-pagination-controls pagination-id="listadoGeneral" boundary-links="true" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row derecha">
+                            <hr style="margin-top: 0px;"/>
+                            <input value="Procesar" 
+                                   class="form-submit" type="submit" 
+                                   style="width: 110px; height: 40px" ng-click="abrirProcesar()" >  
+
+                            <input value="Cancelar" ng-disabled="true"
+                                   class="form-submit" type="submit" 
+                                   style="width: 110px; height: 40px" ng-click="cancelar()" >  
+
+                            <div style="float: right; padding-left: 25px;">
+                                <input value="Programar" 
+                                       class="form-submit" type="submit" 
+                                       style="width: 110px; height: 40px" ng-click="programar()" >  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;" ng-show="!pantallaPrincipal">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div id="block-system-main1" class="block block-system">
+                    <div class="content">
+                        <!--OT-->
+                        <div class="row rowSpace">
+                            <div class="form-group" ng-class="{'has-error': errores.idSecretaria}">
+                                <div class="col-xs-3 col-sm-3">
+                                    <label for="organismotransito" class="control-label">
+                                        Organismo de Tránsito:
+                                    </label>
+                                </div>
+                                <div class="col-xs-9 col-sm-9">
+                                    <div class="form-group" ng-class="{'has-error': errores.idSecretaria}">
+                                        <select class="form-control" 
+                                                id="sel" 
+                                                name="name" 
+                                                style="width:320px" 
+                                                ng-model="datosFormulario.idSecretaria" 
+                                                ng-options="ot.descripcionCorta for ot in listarOt"
+                                                value="{{ot.descripcionCorta}}">
+                                        </select>
+                                        <span ng-show="errores.idSecretaria" class="control-label">{{errores.idSecretaria}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--OT-->
+                        <!--TIPO CARGUE-->
+                        <div class="row rowSpace">
+                            <div class="form-group" ng-class="{'has-error': errores.tipoCargue}">
+                                <div class="col-xs-3 col-sm-3">
+                                    <label for="tipCargue" class="control-label">
+                                        Tipo de Cargue:
+                                    </label>
+                                </div>
+                                <div class="col-xs-9 col-sm-9">
+                                    <div class="form-group" ng-class="{'has-error': errores.tipoCargue}">
+                                        <select class="form-control" 
+                                                id="sel" 
+                                                name="name" 
+                                                style="width:320px" 
+                                                ng-model="datosFormulario.tipoCargue" >
+                                            <option value="">--Seleccione una opción--</option>
+                                            <option value="1">Normal</option>
+                                            <option value="2">Resolucion</option>
+                                            <!--                                                            <option value="3">CD</option>
+                                                                                                        <option value="4">Reproceso</option>-->
+                                            <option value="5">Sede Operativa</option>
+                                        </select>
+                                        <span ng-show="errores.tipoCargue" class="control-label">{{errores.tipoCargue}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!--CARGUE ARCHIVO-->
+                        <div class="row rowSpace" ng-class="{'has-error': errores.fileadjunto}">
+                            <div class="col-xs-3 col-sm-3">
+                                <label for="archivo" class="control-label">
+                                    Archivo comprimido
+                                </label>
+                                <br>
+                                Formatos permitidos: .zip
+                            </div>
+                            <div class="col-xs-9 col-sm-9">
+                                <input type="file" id="files" name="files" 
+                                       data-preview-file-type="any" accept=".zip" /> 
+                                <input
+                                    type="text" id="archivo" name="archivo" ng-value=""
+                                    ng-model="newsoporteRNA.archivoEmpaquetado" ng-show="false"> 
+                                <input
+                                    type="text" id="nombre" name="nombre" ng-value=""
+                                    ng-model="newsoporteRNA.nombreArchivoEmpaquetado" ng-show="false">
+                                <div id="progress_bar">
+                                    <div class="percent">0%</div>
+                                </div>
+                                <span class="control-label" ng-show="errores.fileadjunto">{{errores.fileadjunto}}</span>
+                            </div>
+                        </div>
+                        <!--CARGUE ARCHIVO-->
+                        <!--BOTONES-->
+                        <div class="row derecha">
+                            <hr style="margin-top: 0px;"/>
+
+                            <input value="Importar" 
+                                   class="form-submit" type="submit" 
+                                   style="width: 110px; height: 40px" ng-click="importarRNA()" >
+
+                            <input value="Regresar" 
+                                   class="form-submit" type="submit" 
+                                   style="width: 110px; height: 40px" ng-click="regresar()" >
+                        </div>
+                        <!--BOTONES-->
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Dialog Confirmacion-->
+<div class="modal fade espera-modal-sm" id="dlgConfirm" tabindex="-1" role="dialog" aria-labelledby="dlgConfirm" aria-hidden="false">
+    <div class="modal-backdrop fade in" style="height: 100%;"></div>
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header">
+                    <div class="col-sm-10"><strong>Informaci&oacute;n</strong></div>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: justify;"><span id="msgConfirm"></span></div>
+                </div>
+                <div class="modal-footer">
+                    <input id="regemp-submit2" name="regemp-submit" value="Aceptar" 
+                           class="form-submit" type="submit" data-dismiss="modal" ng-click="procesar()"
+                           style="width: 110px; height: 40px">
+
+                    <input id="regemp-submit1" name="regemp-submit" value="Cancelar" 
+                           class="form-submit" type="submit" data-dismiss="modal"
+                           style="width: 110px; height: 40px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

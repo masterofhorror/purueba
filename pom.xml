@@ -1,0 +1,197 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>co.com.runt.sagir</groupId>
+    <artifactId>Sagir.0.1</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+
+    <name>Sagir.0.1</name>
+
+    <properties>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>       
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>co.com.runt</groupId>
+            <artifactId>LogConsultas-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>co.com.runt</groupId>
+            <artifactId>ProcesadorArchivos</artifactId>
+            <version>1.0.1</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>ojdbc7</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>7</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>co.com.runt</groupId>
+            <artifactId>clienteServiciosFirma</artifactId>
+            <version>1.1.0</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-core</artifactId>
+            <version>1.18.1</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.18.1</version>
+            <scope>compile</scope>
+        </dependency> 
+        
+        <dependency>
+            <groupId>co.com.runt</groupId>
+            <artifactId>runt-dev-utilities</artifactId>
+            <version>1.0.7</version>
+        </dependency>
+        
+        <!--Autenticacion-->
+        <dependency>
+            <groupId>co.com.runt</groupId>
+            <artifactId>ClienteOID</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>co.com.runt</groupId>
+            <artifactId>ClienteAutenticacion</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        
+        <!--Correo-->
+        <dependency>
+            <groupId>co.com.runt</groupId>
+            <artifactId>ClienteEnvioCorreo</artifactId>
+            <version>1.0.3</version>
+            <type>jar</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency> 
+        
+        <dependency>
+            <groupId>co.com.runt</groupId>
+            <artifactId>AutenticacionRunt.api</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-fonts</artifactId>
+            <version>5.6.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>fonts</groupId>
+            <artifactId>Arial</artifactId>
+            <version>1.0</version>
+        </dependency> 
+        <!--        <dependency>
+            <groupId>org.tobereplaced</groupId>
+            <artifactId>nio.file</artifactId>
+            <version>0.1.0</version>
+        </dependency> -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.7</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <compilerArguments>
+                        <endorseddirs>${endorsed.dir}</endorseddirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml> 
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${endorsed.dir}</outputDirectory>
+                            <silent>true</silent>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>javax</groupId>
+                                    <artifactId>javaee-endorsed-api</artifactId>
+                                    <version>6.0</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

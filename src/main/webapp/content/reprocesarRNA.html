@@ -1,0 +1,254 @@
+<div class="contenido col-md-12 panelServicio">
+    <div id="block-block-8" class="block block-block">
+        <div class="content">
+            <div class="bloqueH_actores">
+                <h3 class="titulo-linea">REPROCESAR RNA</h3>
+
+            </div>
+        </div>         
+    </div>
+    <div class="contenido col-md-12">
+        <div id="messages">
+            <div class="messages status ok" ng-show="mensajeSuccess">
+                <h4>Exito</h4>
+                <span id="msgSuccess"></span>
+            </div>
+            <div class="messages status warning" ng-show="mensajeInfo">
+                <h4>Información</h4>
+                <span id="msgInfo"></span>
+            </div>
+            <div class="messages status error" ng-show="mensajeError">
+                <h4>Error</h4>
+                <span id="msgError"></span>
+            </div>
+        </div>
+
+
+        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Filtros de búsqueda</div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="block-system-main1" class="block block-system">
+                        <div class="content">
+                            <div class="row rowSpace">
+                                <div class="form-group" ng-class="{'has-error': errores.codCarga}">
+                                    <div class="col-xs-3 col-sm-3">
+                                        <label for="codCarga" class="control-label">
+                                            Código de Carga:
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9">
+                                        <input id="placa" 
+                                               style="width: 50%"
+                                               ng-class="{'has-error': errores.codCarga}"
+                                               class="form-control input-sm required" 
+                                               type="text" 
+                                               ng-model="datosFormulario.codCarga"
+                                               maxlength="6"
+                                               capitalize/> 
+                                        <span ng-show="errores.codCarga" class="control-label">{{errores.codCarga}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row derecha">
+                                <hr style="margin-top: 0px;"/>
+
+                                <button type="button" class="btn btn-danger" ng-click = "consulta()">Consultar</button> 
+                                <button type="button" class="btn btn-danger" ng-click = "procesarTodo()">Procesar Todo</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body" ng-show="verConsulta">
+                    <div class="region region-content">
+                        <div id="block-system-main" class="block block-system">
+                            <div class="content">
+                                <div class="table-responsive">
+                                    <table id="mostrarInfo" ng-table="resultados" style="border: 1px" class="table table-striped table-bordered" cellspacing="0" width="100%">     
+                                        <tr>
+                                            <th><div align="CENTER"><font color="#CC6600">PLACA</font></div></th>
+                                        <th><div align="CENTER"><font color="#CC6600">ESTADO</font></div></th>
+                                        <th><div align="CENTER"><font color="#CC6600">OBSERVACIÓN</font></div></th>
+                                        <th><div align="CENTER"><font color="#CC6600">PROCESAR</font></div></th>
+                                        </tr>
+
+                                        <tr dir-paginate="resultadoConsulta in resultadoConsulta | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER">{{resultadoConsulta.placa}}</div></td>
+                                            <td><div align="CENTER">{{resultadoConsulta.estado}}</div></td>
+                                            <td><div align="CENTER">{{resultadoConsulta.migrado|uppercase}}</div></td>
+                                            <td>
+                                                <div align = "center">
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" ng-click="procesar(resultadoConsulta.placa)" data-target=".bs-example-modal-lg">    
+                                                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                                    </button> 
+                                                </div>
+                                            </td>                   
+                                        </tr>
+                                    </table> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contenido col-md-9">
+                <div class="panel-body" ng-show="verDetalle">
+                    <div class="region region-content">
+                        <div id="block-system-main" class="block block-system">
+                            <div class="content">
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info" ng-click="consulta(datosFormulario.placa)" data-dismiss="modal">Volver</button>
+                                </div>
+                                <table ng-table="resultadosB" style="border: 1px" class="table table-striped table-bordered" cellspacing="0" width="100%">     
+                                    <tr>
+                                    <tr dir-paginate="resultado in resultados | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                        <td><strong><font color="#CC6600">ID ORGANISMO DE TRANSITO :</font></td><strong>
+                                        <td>{{resultado.idOt}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">SECRETARIA</font></div></td>
+                                            <td>{{resultado.secretaria}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">PLACA</font></div></td>
+                                            <td>{{resultado.placa}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">MARCA</font></div></td>
+                                            <td>{{resultado.marca}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">LINEA</font></div></td>
+                                            <td>{{resultado.linea}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">CLASE</font></div></td>
+                                            <td>{{resultado.clase}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">CARROCERIA</font></div></td>
+                                            <td>{{resultado.carroceria}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">MODALIDAD</font></div></td>
+                                            <td>{{resultado.modalidad}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">CILINDRAJE</font></div></td>
+                                            <td>{{resultado.cilindraje}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">MODELO</font></div></td>
+                                            <td>{{resultado.modelo}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">MOTOR</font></div></td>
+                                            <td>{{resultado.motor}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">SERIE</font></div></td>
+                                            <td>{{resultado.serie}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">CHASIS</font></div></td>
+                                            <td>{{resultado.chasis}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">CAPACIDAD DE TONELADA </font></div></td>
+                                            <td>{{resultado.capacidadToneladas}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">CAPACIDAD DE PASAJEROS</font></div></td>
+                                            <td>{{resultado.capacidadPasaj}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">ESTADO</font></div></td>
+                                            <td>{{resultado.estado}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">MIGRADO</font></div></td>
+                                            <td>{{resultado.migrado}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">CODIGO DE CARGA </font></div></td>
+                                            <td>{{resultado.codCarga}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">RADICADO</font></div></td>
+                                            <td>{{resultado.radicado}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">FECHA DE CARGA</font></div></td>
+                                            <td>{{resultado.fechaCarga| date:'dd/MM/yyyy'}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">ID FOLIO</font></div></td>
+                                            <td>{{resultado.idFolio}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">ESTADO DEL CARGUE</font></div></td>
+                                            <td>{{resultado.estadoCargue}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">BOLETIN</font></div></td>
+                                            <td>{{resultado.boletin}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">DESC. CLASE</font></div></td>
+                                            <td>{{resultado.descClase}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">DESC. MODALIDAD</font></div></td>
+                                            <td>{{resultado.descModalidad}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">INDVALIDO</font></div></td>
+                                            <td>{{resultado.indValido}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">DESC. ESTADO</font></div></td>
+                                            <td>{{resultado.descEstado}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">TIPOCARRO</font></div></td>
+                                            <td>{{resultado.tipoCarro}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">ACTUALIZA</font></div></td>
+                                            <td>{{resultado.actualiza}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">CAMBIOESTADO</font></div></td>
+                                            <td>{{resultado.cambioEstado}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">CAMBIOFORMATO</font></div></td>
+                                            <td>{{resultado.cambioFormato}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">CAMBIOSERVICIO</font></div></td>
+                                            <td>{{resultado.cambioServicio}}</td>
+                                        </tr>
+                                        <tr dir-paginate="resultado in resultadoDetalle | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td><div align="CENTER"><font color="#CC6600">IDSERVICIO</font></div></td>
+                                            <td>{{resultado.idServicio}}</td> 
+                                        </tr>                                 
+                                        </tr>
+                                </table> 
+                                <!--                    </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

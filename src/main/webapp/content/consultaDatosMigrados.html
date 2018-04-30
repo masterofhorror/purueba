@@ -1,0 +1,193 @@
+<style>
+    
+    .col-md-6 {
+    padding-left: 0 !important;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    border: 1px;
+    border: 3px solid rgb(255,0,0);
+}
+
+</style>
+<div class="contenido col-md-12 panelServicio">
+    <div id="block-block-8" class="block block-block">
+        <div class="content">
+            <div class="bloqueH_actores">
+                <h3 class="titulo-linea">CONSULTA DATOS MIGRADOS</h3>
+
+            </div>
+        </div>         
+    </div>
+    <div class="contenido col-md-12">
+        <div id="messages">
+            <div class="messages status ok" ng-show="verMsjOk">
+                <h4>Información</h4>
+                <span id="msgResultadoRegOk"></span>
+            </div>
+            <div class="messages status error" ng-show="verMsjError">
+                <h4>Error</h4>
+                <span id="msgResultadoRegError"></span>
+            </div>
+        </div>
+        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Filtros de búsqueda</div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="block-system-main1" class="block block-system">
+                        <div class="content">
+                            <div class="row rowSpace" ng-class="errores.placa ? 'has-error' : ''">
+                                <div class="col-xs-3 col-sm-3">
+                                    <label for="placa" class="control-label">
+                                        Placa:
+                                    </label>
+                                </div>
+                                <div class="col-xs-9 col-sm-9">
+                                    <input id="placa" 
+                                           style="width: 50%"
+                                           class="form-control input-sm required" 
+                                           type="text" 
+                                           ng-model="datosFormulario.placa"
+                                           capitalize
+                                           maxlength="6"/>
+                                    <span class="control-label" ng-show="errores.placa">{{errores.placa}}</span>
+                                </div>
+                            </div>	
+                        </div>
+                        <div class="content">
+                            <div class="row rowSpace" ng-class="errores.idCarga ? 'has-error' : ''">
+                                <div class="col-xs-3 col-sm-3">
+                                    <label for="idCarga" class="control-label">
+                                        Codigo de Carga:
+                                    </label>
+                                </div>
+                                <div class="col-xs-9 col-sm-9">
+                                    <input id="idCarga" 
+                                           style="width: 50%"
+                                           class="form-control input-sm required" 
+                                           type="text" 
+                                           ng-model="datosFormulario.idCarga"
+                                           capitalize
+                                           maxlength="6"/>
+                                    <span class="control-label" ng-show="errores.idCarga">{{errores.idCarga}}</span>
+                                </div>
+                            </div>	
+                        </div>
+                    </div>
+                </div>
+                <div id="block-block-8" class="block block-block">
+                    <div class="content">
+                        <div class="bloqueH_actores">
+                            <div class="botones-actores">                        
+                                <p class="btn-act">
+                                    <a class="btnNA btn-otros" ng-click="buscar(1)">Datos Migrados</a>
+                                    <br />
+                                </p>
+                            </div>
+                            <div class="contenido col-md-12">
+                                <div class="panel-body">
+                                    <div class="region region-content">
+                                        <div id="block-system-main" class="block block-system">
+                                            <div class="content">
+                                                <div ng-show="tipo === 1">  
+                                                    <div class="col-2">
+                                                        <label class="control-label">
+
+                                                        </label>
+                                                    </div>
+                                                    <div class="table-responsive" align="CENTER" ng-show="verResultado">
+                                                        <table style="border: 1px" class="table-bordered" >
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PLACA</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.placa}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ORGANISMO DE TRANSITO</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.secretaria}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MARCA</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.marca}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; LINEA</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.linea}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CLASE</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.clase}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; COLOR</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.color}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SERVICIO</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.servicio}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CARROCERIA</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.carroceria}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CILINDRAJE</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.cilindraje}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MODELO</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.modelo}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NUMERO DE MOTOR</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.num_motor}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NUMERO DE SERIE</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.num_serie}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NUMERO DE CHASIS</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.num_chasis}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CAP. TONELADAS</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.toneladas}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CAP. PASAJEROS</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.pasajeros}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ESTADO</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.estado}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FECHA MATRICULA INICIAL</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.matricula_inicial}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; FECHA DE CARGA</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.fecha_carga}}</td>
+                                                            </tr>
+                                                            <tr> 
+                                                                <th bgcolor = "white" width="280" height="40"><div><font color="#CC6600">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; COMBUSTIBLE</font></div></th>
+                                                                <td bgcolor = "white" width="400" height="40">&nbsp; &nbsp; &nbsp; {{resultado.combustible}}</td>
+                                                            </tr>
+                                                        </table>  
+                                                    </div>
+                                                </div>                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

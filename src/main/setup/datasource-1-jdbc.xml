@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jdbc-data-source xmlns="http://xmlns.oracle.com/weblogic/jdbc-data-source">
+  <name>davidpre</name>
+  <jdbc-driver-params>
+    <url>jdbc:oracle:thin:@//10.10.6.175:1521/runtprod.runt.com.co</url>
+    <driver-name>oracle.jdbc.OracleDriver</driver-name>
+    <properties>
+      <property>
+        <name>user</name>
+        <value>dsalamanca</value>
+      </property>
+      <property>
+        <name>password</name>
+        <value>1088248080</value>
+      </property>
+    </properties>
+  </jdbc-driver-params>
+  <jdbc-data-source-params>
+    <jndi-name>davidpre</jndi-name>
+  </jdbc-data-source-params>
+</jdbc-data-source>

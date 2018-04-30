@@ -1,0 +1,5 @@
+projectKey=Sagir
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/Sagir
+ceTaskId=AWFrfw09rRRFVubGnQ-h
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWFrfw09rRRFVubGnQ-h

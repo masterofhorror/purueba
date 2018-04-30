@@ -1,0 +1,310 @@
+<div class="contenido col-md-12 panelServicio">
+    <div
+        class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+        <h3 class="titulo-linea">Mi perfil</h3>
+
+        <div id="messages">
+            <div class="messages status ok" ng-show="mensajeSuccess">
+                <h4>Exito</h4>
+                <span id="msgSuccess"></span>
+            </div>
+            <div class="messages status warning" ng-show="mensajeInfo">
+                <h4>Información</h4>
+                <span id="msgInfo"></span>
+            </div>
+            <div class="messages status error" ng-show="mensajeError">
+                <h4>Error</h4>
+                <span id="msgError"></span>
+            </div>
+        </div>
+
+        <div class="panel-body" ng-show="!mostrarPanelClave">
+            <div class="panel-collapse">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Modificar Mi Perfil</div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div id="block-system-main1" class="block block-system">
+                            <div class="content">
+
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-sm-6">
+                                        <label for="tipoIdentificacion" class="control-label">Tipo documento:</label>
+                                        <input id="tipoIdentificacion" 
+                                               class="form-control input-sm" 
+                                               required="true"
+                                               ng-maxlength="50"
+                                               type="text" 
+                                               ng-disabled="true"
+                                               value="{{cargarTipoDocumento(usuario.tipoDocumento)}}"/>
+                                    </div>
+
+                                    <div class="form-group col-xs-12 col-sm-6">
+                                        <label for="numeroIdentificacion" class="control-label">Nro documento:</label>
+                                        <input id="numeroIdentificacion" 
+                                               class="form-control input-sm required" 
+                                               required="true"
+                                               ng-maxlength="50"
+                                               type="text" 
+                                               ng-disabled="true"
+                                               ng-model="usuario.documento"/>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-sm-6" ng-class="errores.nombres ? 'has-error' : ''">
+                                        <label for="nombres" class="control-label"><font class="obligatorio">*</font> Nombres:</label>
+                                        <input id="nombres" 
+                                               class="form-control input-sm required" 
+                                               type="text" 
+                                               ng-model="usuario.nombres"/>
+                                        <span class="control-label" ng-show="errores.nombres">{{errores.nombres}}</span>
+                                    </div>
+
+                                    <div class="form-group col-xs-12 col-sm-6" ng-class="errores.apellidos ? 'has-error' : ''">
+                                        <label for="apellidos" class="control-label"><font class="obligatorio">*</font> Apellidos:</label>
+                                        <input id="apellidos" 
+                                               class="form-control input-sm required" 
+                                               type="text" 
+                                               ng-model="usuario.apellidos"/>
+                                        <span class="control-label" ng-show="errores.apellidos">{{errores.apellidos}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-sm-6" ng-class="errores.direccion ? 'has-error' : ''">
+                                        <label for="direccion" class="control-label"><font class="obligatorio">*</font> Direcci&oacute;n:</label>
+                                        <input id="direccion" 
+                                               class="form-control input-sm required" 
+                                               type="text" 
+                                               ng-model="usuario.direccion"/>
+                                        <span class="control-label" ng-show="errores.direccion">{{errores.direccion}}</span>
+                                    </div>
+
+                                    <div class="form-group col-xs-12 col-sm-6" ng-class="errores.telefono ? 'has-error' : ''">
+                                        <label for="telefono" class="control-label"><font class="obligatorio">*</font> Tel&eacute;fono:</label>
+                                        <input id="telefono" 
+                                               class="form-control input-sm required" 
+                                               type="text" 
+                                               ng-model="usuario.telefono"/>
+                                        <span class="control-label" ng-show="errores.telefono">{{errores.telefono}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-sm-6" ng-class="errores.genero ? 'has-error' : ''">
+                                        <label for="genero" class="control-label"><font class="obligatorio">*</font> Genero:</label>
+                                        <select id="genero" 
+                                                class="form-control" style="width: 100%"
+                                                ng-model="usuario.genero">
+                                            <option value="" selected="selected">-- Seleccione una opci&oacute;n --</option>
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                        </select>
+                                        <span class="control-label" ng-show="errores.genero">{{errores.genero}}</span>
+                                    </div>
+                                    <div class="form-group col-xs-12 col-sm-6" ng-class="errores.fechaNacimiento ? 'has-error' : ''">
+                                        <label for="fechaNacimiento" class="control-label"><font class="obligatorio">*</font> Fecha de nacimiento dd/MM/yyyy:</label>
+                                        <input calendar
+                                               id="fechaNacimiento" 
+                                               class="form-control input-sm required" 
+                                               ng-model="usuario.fechaNacimiento"/>
+                                        <span class="control-label" ng-show="errores.fechaNacimiento">{{errores.fechaNacimiento}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-sm-6">
+                                        <label for="entidad" class="control-label">Entidad a la que pertenece:</label>
+                                        <input id="entidad" 
+                                               class="form-control input-sm" 
+                                               type="text" 
+                                               ng-disabled="true"
+                                               ng-model="usuario.acreedor.nombre"/>
+                                    </div>
+
+                                    <div class="form-group col-xs-12 col-sm-6">
+                                        <label for="nombreUsuario" class="control-label">Nombre de usuario:</label>
+                                        <input id="nombreUsuario" 
+                                               class="form-control input-sm" 
+                                               type="text" 
+                                               ng-disabled="true"
+                                               ng-model="usuario.documento"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-screenshot"></span>&nbsp;&nbsp;Datos Biométricos</div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div id="block-system-main1" class="block block-system">
+                            <div class="content">
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;Direcci&oacute;n de Correo</div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div id="block-system-main1" class="block block-system">
+                            <div class="content">
+
+                                <div class="row"> 
+                                    <div class="form-group col-xs-12 col-sm-12" ng-class="errores.email ? 'has-error' : ''">
+                                        <label for="email" class="col-sm-3 control-label small">Correo Electr&oacute;nico:</label>
+                                        <input id="email" 
+                                               class="form-control input-sm required" 
+                                               type="text" 
+                                               ng-model="email"/>
+                                        <span class="control-label" ng-show="errores.email">{{errores.email}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group col-xs-12 col-sm-12">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary btn-sm small" ng-click="agregarCorreo()">Agregar</button>
+                                        <button type="button" class="btn btn-default btn-sm small" ng-click="cancelarCorreo()">Cancelar</button>
+                                    </div>
+                                </div> 
+
+                                <br><br><br>
+
+                                <div class="row col-xs-12 col-sm-12" ng-class="errores.correos ? 'has-error' : ''">
+                                    <table class="table table-bordered" style="margin-bottom: 0px">
+                                        <thead class="title-hq-table">      
+                                            <tr>
+                                                <th colspan="2" style="width: 100%; text-align: center;">Direcciones de Correo Asociadas</th>
+                                            </tr>                                                
+                                            <tr>
+                                                <th style="width: 80%; text-align: center;">Correo</th>
+                                                <th style="width: 10%; text-align: center;">Eliminar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="correo in correos">                               
+                                                <td>{{correo}}</td>
+                                                <td align="center">
+                                                    <button class="btn btn-default btnDetalleTabla" ng-click="eliminarCorreo($index)">
+                                                        <span class="glyphicon glyphicon-remove btn-icon" aria-hidden="true"></span>
+                                                    </button>
+                                                </td>                               
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <span class="control-label" ng-show="errores.correos">{{errores.correos}}</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="row derecha" style="padding-right: 10px;">
+                    <hr class="division"/>
+
+                    <button type="button" class="btn btn-success" ng-click="actualizarUsuario()">Enviar</button>
+                    <button type="button" class="btn btn-info" ng-click="cambiarContrasena()">Cambiar contraseña</button>
+                    <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+                </div>
+
+            </div>
+        </div>  
+
+
+        <div class="panel-body" ng-show="mostrarPanelClave">
+            <div class="panel-collapse">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-bookmark"></span>&nbsp;&nbsp;Cambiar Contraseña</div>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div id="block-system-main1" class="block block-system">
+                            <div class="content">
+
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-sm-12" ng-class="errores.claveActual ? 'has-error' : ''">
+                                        <label for="claveActual" class="control-label"><font class="obligatorio">*</font> Contraseña actual:</label>
+                                        <input type="password" class="form-control required" 
+                                               id="claveActual" 
+                                               name="claveActual" 
+                                               title="Digite su contraseña actual" 
+                                               ng-model="claveActual"/>
+                                        <span class="control-label" ng-show="errores.claveActual">{{errores.claveActual}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-sm-6" ng-class="errores.claveNueva ? 'has-error' : ''">
+                                        <label for="claveNueva" class="control-label"><font class="obligatorio">*</font> Nueva contraseña:</label>
+                                        <input type="password" class="form-control required" 
+                                               id="claveNueva" 
+                                               name="claveNueva" 
+                                               title="Digite su nueva contraseña" 
+                                               ng-model="claveNueva"/>
+                                        <span class="control-label" ng-show="errores.claveNueva">{{errores.claveNueva}}</span>
+                                    </div>
+
+                                    <div class="form-group col-xs-12 col-sm-6" ng-class="errores.claveNuevaConfir ? 'has-error' : ''">
+                                        <label for="claveNuevaConfir" class="control-label"><font class="obligatorio">*</font> Confirmar contraseña:</label>
+                                        <input type="password" class="form-control required" 
+                                               id="claveNuevaConfir" 
+                                               name="claveNuevaConfir" 
+                                               title="Confirme su nueva contraseña" 
+                                               ng-model="claveNuevaConfir"/>
+                                        <span class="control-label" ng-show="errores.claveNuevaConfir">{{errores.claveNuevaConfir}}</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="row derecha" style="padding-right: 10px;">
+                    <hr class="division"/>
+
+                    <button type="button" class="btn btn-success" ng-click="guardarClave()">Guardar</button>
+                    <button type="button" class="btn btn-default" ng-click="cancelarClave()">Cancelar</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

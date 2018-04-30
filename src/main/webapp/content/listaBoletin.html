@@ -1,0 +1,344 @@
+<script>
+    function btnFecha() {
+        $("#btnFecha").click();
+    }
+    $(function () {
+        $("#fechaInicial").datepicker({
+            format: "dd/mm/yyyy"
+        });
+    });
+    $(function () {
+        $("#fechaFinal").datepicker({
+            format: "dd/mm/yyyy"
+        });
+    });
+</script> 
+
+<div class="contenido col-md-12 panelServicio">
+    <div id="block-block-8" class="block block-block">
+        <div class="content">
+            <div class="bloqueH_actores">
+                <h3 class="titulo-linea">LISTAR BOLETINES</h3>
+
+            </div>
+        </div>         
+    </div>
+    <div class="contenido col-md-12">
+        <div id="messages">
+            <div class="messages status ok" ng-show="verMsjOk">
+                <h4>Información</h4>
+                <span id="msgResultadoRegOk"></span>
+            </div>
+            <div class="messages status error" ng-show="verMsjError">
+                <h4>Error</h4>
+                <span id="msgResultadoRegError"></span>
+            </div>
+        </div>
+
+
+        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Filtros de búsqueda</div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div id="block-system-main1" class="block block-system">
+                        <div id="block-block-8" class="block block-block">
+                            <div class="content">
+                                <div class="botones-actores">                        
+                                    <p class="btn-act">
+                                        <a class="btnNA btn-otros" ng-click="codCarga()">Código de Carga</a>
+                                        <br />
+                                        <a class="btnNA btn-otros" ng-click="tipoRegistro()">Tipo de registro</a>
+                                        <br />
+                                        <a class="btnNA btn-otros" ng-click="secretaria()">Autoridad de Tránsito</a>
+                                        <br />
+                                        <a class="btnNA btn-otros" ng-click="rangoFechas()">Rango de Fechas</a>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!--Criterio busqueda por código de carga-->
+                <div class="panel-body" ng-show="verCodCarga">
+                    <div class="region region-content">
+                        <div id="block-system-main" class="block block-system">
+                            <div class="content">
+
+                                <div class="row rowSpace">
+                                    <div class="form-group" ng-class="{'has-error': errores.codCarga}">
+                                        <div class="col-xs-3 col-sm-3">
+                                            <label for="codCarga" class="control-label">
+                                                Código de Carga:
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-9 col-sm-9">
+                                            <input id="placa" 
+                                                   style="width: 50%"
+                                                   ng-class="{'has-error': errores.codCarga}"
+                                                   class="form-control input-sm required" 
+                                                   type="text" 
+                                                   ng-model="datosFormulario.codCarga"
+                                                   maxlength="6"
+                                                   capitalize/> 
+                                            <span ng-show="errores.codCarga" class="control-label">{{errores.codCarga}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="row derecha">
+                                    <hr style="margin-top: 0px;"/>
+
+                                    <button type="button" class="btn btn-danger" ng-click = "consultaPorCodCarga(datosFormulario.codCarga)">Consultar</button> 
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin criterio busqueda por código de carga-->
+
+                <!--Criterio busqueda por tipo de registro-->
+                <div class="panel-body" ng-show="verTipoRegistro">
+                    <div class="region region-content">
+                        <div id="block-system-main" class="block block-system">
+                            <div class="content">
+
+                                <div class="row rowSpace">
+                                    <div class="form-group" ng-class="{'has-error': errores.tipoRegistro}">
+                                        <div class="col-xs-3 col-sm-3">
+                                            <label for="codCarga" class="control-label">
+                                                Tipo de registro:
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-9 col-sm-9">
+                                            <div class="form-group" ng-class="{'has-error': errores.tipoRegistro}">
+                                                <select class="form-control" 
+                                                        id="sel" 
+                                                        name="name" 
+                                                        style="width:320px" 
+                                                        ng-model="datosFormulario.tipoRegistro" >
+                                                    <option value="">--Seleccione una opción--</option>
+                                                    <option value="1">Registro Nacional Automotor (RNA)</option>
+                                                    <option value="2">Registro Nacional Ciudadano (RNC)</option>
+                                                </select>
+                                                <span ng-show="errores.tipoRegistro" class="control-label">{{errores.tipoRegistro}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="row derecha">
+                                    <hr style="margin-top: 0px;"/>
+
+                                    <button type="button" class="btn btn-danger" ng-click = "consultaPorTipoRegistro(datosFormulario.tipoRegistro)">Consultar</button> 
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin criterio busqueda por tipo de registro-->
+
+                <!--Criterio busqueda por secretaria-->
+                <div class="panel-body" ng-show="verIdSecretaria">
+                    <div class="region region-content">
+                        <div id="block-system-main" class="block block-system">
+                            <div class="content">
+
+                                <div class="row rowSpace">
+                                    <div class="form-group" ng-class="{'has-error': errores.idSecretaria}">
+                                        <div class="col-xs-3 col-sm-3">
+                                            <label for="codCarga" class="control-label">
+                                                Autoridad de Tránsito:
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-9 col-sm-9">
+                                            <div class="form-group" ng-class="{'has-error': errores.idSecretaria}">
+                                                <select class="form-control" 
+                                                        id="sel" 
+                                                        name="name" 
+                                                        style="width:320px" 
+                                                        ng-model="datosFormulario" 
+                                                        ng-options="ot.idSecretaria +                           ' | ' +                           ot.descripcionCorta for ot in listarOt"
+                                                        value="{{ot.descripcionCorta}}">
+                                                </select>
+                                                <span ng-show="errores.idSecretaria" class="control-label">{{errores.idSecretaria}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="row derecha">
+                                    <hr style="margin-top: 0px;"/>
+
+                                    <button type="button" class="btn btn-danger" ng-click = "consultaPorIdOt()">Consultar</button> 
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin criterio busqueda por secretaria-->
+
+
+                <!--Criterio busqueda por rango de fechas-->
+                <div class="panel-body" ng-show="verRangoFecha">
+                    <div class="region region-content">
+                        <div id="block-system-main" class="block block-system">
+                            <div class="content">
+
+                                <div class="row rowSpace">
+                                    <div class="form-group" ng-class="{'has-error': errores.fechaInicial}">
+                                        <div class="col-xs-3 col-sm-3">
+                                            <label for="fechaInicial" class="control-label">
+                                                Fecha Inicial:
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-9 col-sm-9">
+                                            <div class='input-group'>
+                                                <span class='input-group-addon'>
+                                                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                                </span>
+                                                <input class="form-control default-cursor"  
+                                                       type='text'
+                                                       style="width: 50%"
+                                                       value="dd/mm/yyyy"
+                                                       id="fechaInicial"
+                                                       ng-class="{'has-error': errores.fechaInicial}"
+                                                       readonly/>
+
+                                            </div>
+                                            <span ng-show="errores.fechaInicial" class="control-label">{{errores.fechaInicial}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="row rowSpace">
+                                    <div class="form-group" ng-class="{'has-error': errores.fechaFin}">
+                                        <div class="col-xs-3 col-sm-3">
+                                            <label for="fechaFin" class="control-label">
+                                                Fecha Fin:
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-9 col-sm-9">
+                                            <div class="input-append date form_datetime">
+                                                <div class='input-group'>
+                                                    <span class='input-group-addon'>
+                                                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                                    </span>
+                                                    <input class="form-control default-cursor" 
+                                                           type='text'
+                                                           style="width: 50%"
+                                                           value="dd/mm/yyyy"
+                                                           id="fechaFinal"
+                                                           ng-class="{'has-error': errores.fechaFin}"
+                                                           readonly/>
+
+                                                </div>
+                                                <span ng-show="errores.fechaFin" class="control-label">{{errores.fechaFin}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="row derecha">
+                                    <hr style="margin-top: 0px;"/>
+
+                                    <button type="button" class="btn btn-danger" ng-click = "consultaPorRangoFecha()">Consultar</button> 
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin criterio busqueda por rango de fechas-->
+                <!--Consulta por código de carga-->
+                <div class="panel-body" ng-show="verResultado">
+                    <div class="region region-content">
+                        <div id="block-system-main" class="block block-system">
+                            <div class="content">
+
+                                <div class="table-responsive">
+                                    <table id="mostrarInfo" ng-table="resultados" style="border: 1px" class="table table-striped table-bordered" cellspacing="0" width="100%">     
+                                        <tr>
+                                            <th><div align="CENTER"><font color="#CC6600">CÓDIGO DE CARGA</font></div></th>
+                                            <th><div align="CENTER"><font color="#CC6600">TIPO DE REGISTRO</font></div></th>
+                                            <th><div align="CENTER"><font color="#CC6600">FECHA</font></div></th>
+                                            <th><div align="CENTER"><font color="#CC6600">ORGANISMO DE TRÁNSITO</font></div></th>
+                                            <th><div align="CENTER"><font color="#CC6600">BOLETÍN</font></div></th>
+                                            <th><div align="CENTER"><font color="#CC6600">GENERAR</font></div></th>
+                                        </tr>
+
+                                        <tr dir-paginate="resultado in resultadoCodCarga | filter:search | itemsPerPage:pageSize:'tblpaginationresult'" current-page="currentPage" pagination-id="tblpaginationresult">
+                                            <td><div align="CENTER">{{resultado.codCarga}}</div></td>
+                                            <td>
+                                                <div align="CENTER">
+                                                    <div ng-show="resultado.tipoRegistro === 1">RNA</div>
+                                                    <div ng-show="resultado.tipoRegistro === 2">RNC</div>
+                                                </div>
+                                            </td>                              
+                                            <td><div align="CENTER">{{resultado.fechaCarga| date:'dd-MM-yyyy'}}</div></td>
+                                            <td><div align="CENTER">{{resultado.idSecretaria.descripcionCorta}}</div></td>
+                                            <td><div align="CENTER">{{resultado.idBoletin}}</div></td>
+                                            <td>
+                                                <div align="CENTER">
+                                                    <button class="btn btn-danger">
+                                                        <span class="glyphicon glyphicon-cloud-download" aria-hidden="true" ng-click="generarReporte(resultado.codCarga)"></span>
+                                                    </button>
+                                                </div>
+                                            </td>                 
+                                        </tr>
+                                    </table> 
+                                    <div>
+                                        <dir-pagination-controls boundary-links="true" pagination-id="tblpaginationresult" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin consulta por código de carga-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade espera-modal-sm" id="dlgDownLoad" tabindex="-1"
+     role="dialog" aria-labelledby="dlgEspera" aria-hidden="false">
+    <div class="modal-backdrop fade in" style="height: 100%;"></div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header">
+                    <div class="col-sm-10">
+                        <strong>Descargando archivo...</strong>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div style="text-align: justify;">
+                        <img src="./sites/all/themes/runt/images/cargando.GIF" alt="cargando" /> <span>Por
+                            favor espere mientras generamos el archivo .Zip</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

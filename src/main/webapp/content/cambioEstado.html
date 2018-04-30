@@ -1,0 +1,164 @@
+<div class="contenido col-md-12 panelServicio">
+    <div id="block-block-8" class="block block-block">
+        <div class="content">
+            <div class="bloqueH_actores">
+                <h3 class="titulo-linea">CAMBIO DE ESTADO</h3>
+
+            </div>
+        </div>         
+    </div>
+    <div class="contenido col-md-12">
+        <div id="messages">
+            <div class="messages status ok" ng-show="verMsjOk">
+                <h4>Información</h4>
+                <span id="msgResultadoRegOk"></span>
+            </div>
+            <div class="messages status error" ng-show="verMsjError">
+                <h4>Error</h4>
+                <span id="msgResultadoRegError"></span>
+            </div>
+        </div>
+
+        <div id="filtroBusqueda" class="panelPrincipal" style="padding-top: 15px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-10 labelRunt"><span class="glyphicon glyphicon-filter"></span>&nbsp;&nbsp;Filtros de búsqueda</div>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div id="block-system-main1" class="block block-system">
+                        <div class="content">
+                            <div class="row rowSpace">
+                                <div class="form-group" ng-class="{'has-error': errores.placa}">
+                                    <div class="col-xs-3 col-sm-3">
+                                        <label for="placa" class="control-label">
+                                            Placa:
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9">
+                                        <input id="placa" 
+                                               style="width: 50%"
+                                               ng-class="{'has-error': errores.placa}"
+                                               class="form-control input-sm required" 
+                                               type="text" 
+                                               ng-model="datosFormulario.placa"
+                                               maxlength="6"
+                                               capitalize/> 
+                                        <span ng-show="errores.placa" class="control-label">{{errores.placa}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="row rowSpace">
+                                <div class="form-group" ng-class="{'has-error': errores.estado}">
+                                    <div class="col-xs-3 col-sm-3">
+                                        <label for="estado" class="control-label">
+                                            Estado:
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9">
+
+                                        <select class="form-control" ng-class="{'has-error': errores.estado}" id="exampleSelect1" style="width: 50%" ng-model="datosFormulario.estado">
+                                            <option value="1">ACTIVO</option>
+                                            <option value="2">CANCELADO</option>
+                                            <option value="3">TRASLADO</option>
+                                        </select>
+                                        <span ng-show="errores.estado" class="control-label">{{errores.estado}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row rowSpace">
+                                <div class="form-group" ng-class="{'has-error': errores.codCarga}">
+                                    <div class="col-xs-3 col-sm-3">
+                                        <label for="codCarga" class="control-label">
+                                            Código de Carga:
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9">
+                                        <input id="placa" 
+                                               style="width: 50%"
+                                               ng-class="{'has-error': errores.codCarga}"
+                                               class="form-control input-sm required" 
+                                               type="text" 
+                                               ng-model="datosFormulario.codCarga"
+                                               capitalize/> 
+                                        <span ng-show="errores.codCarga" class="control-label">{{errores.codCarga}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="row rowSpace">
+                                <div class="form-group" ng-class="{'has-error': errores.nroTicket}">
+                                    <div class="col-xs-3 col-sm-3">
+                                        <label for="nroTicket" class="control-label">
+                                            Número de Ticket:
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9">
+                                        <input id="placa" 
+                                               style="width: 50%"
+                                               ng-class="{'has-error': errores.nroTicket}"
+                                               class="form-control input-sm required" 
+                                               type="text" 
+                                               ng-model="datosFormulario.nroTicket"
+                                               maxlength="16"
+                                               capitalize/>
+                                        <span ng-show="errores.nroTicket" class="control-label">{{errores.nroTicket}}</span>
+                                    </div>
+                                </div>	
+                            </div>
+                            <br>
+
+                            <div class="row derecha">
+                                <hr style="margin-top: 0px;"/>
+
+                                <button type="button" class="btn btn-danger" ng-click = "consulta(datosFormulario.placa)">Consultar</button> 
+                                <button type="button" class="btn btn-danger" ng-click="cambioEstado()">Cambiar Estado</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" ng-show="verConsulta">
+                    <div class="region region-content">
+                        <div id="block-system-main" class="block block-system">
+                            <div class="content">
+                                <div class="table-responsive">
+                                    <table id="mostrarInfo" ng-table="resultadosC" style="border: 1px" class="table table-striped table-bordered" cellspacing="0" width="100%">     
+                                        <tr>
+                                            <th><div align="CENTER"><font color="#CC6600">PLACA</font></div></th>
+                                        <th><div align="CENTER"><font color="#CC6600">SECRETARIA</font></div></th>
+                                        <th><div align="CENTER"><font color="#CC6600">ESTADO VEHICULO</font></div></th>
+                                        <th><div align="CENTER"><font color="#CC6600">CODIGO DE CARGA</font></div></th>
+                                        <th><div align="CENTER"><font color="#CC6600">ESTADO CARGUE</font></div></th>
+                                        <th><div align="CENTER"><font color="#CC6600">ESTADO ACTUAL</font></div></th>
+                                        </tr>
+
+                                        <tr dir-paginate="resultadoConsulta in resultadoConsulta | filter:search | itemsPerPage:pageSize" current-page="currentPage">
+                                            <td>{{resultadoConsulta.placa}}</td>
+                                            <td>{{resultadoConsulta.secretaria| date:'dd-MM-yyyy HH:mm:ss'}}</td>
+                                            <td>
+                                                <div ng-show="resultadoConsulta.estado === '1'">ACTIVO</div>
+                                                <div ng-show="resultadoConsulta.estado === '2'">CANCELADO</div>
+                                                <div ng-show="resultadoConsulta.estado === '3'">TRASLADO</div>
+                                            </td>
+                                            <td>{{resultadoConsulta.codCarga}}</td>
+                                            <td>{{resultadoConsulta.estadoCargue}}</td>
+                                            <td>{{resultadoConsulta.estadoActual}}</td>                 
+                                        </tr>
+                                    </table> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
